@@ -1,5 +1,5 @@
 /*
- * KBKx localization strings.
+ * KabuK Exchange localization strings.
  * ---------------------------------------------------------------------------
  * These cover the major UI chrome the brief asks for: navigation, CTAs,
  * section headings, and form labels. Long-form marketing body copy stays in
@@ -45,7 +45,7 @@ const TRANSLATIONS = {
 
     "hero.eyebrow": "Enterprise travel distribution infrastructure",
     "hero.title": "Connect global hotel supply and demand through one platform",
-    "hero.subtitle": "KBKx is a B2B2B travel distribution platform by KabuK Style Inc. — connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity.",
+    "hero.subtitle": "KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc. — connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity.",
     "hero.networkTitle": "Live connectivity map",
 
     "home.badge.planned": "Planned",
@@ -90,7 +90,7 @@ const TRANSLATIONS = {
     "home.cap.ai.t": "Future AI support",
     "home.cap.ai.d": "AI assistance for onboarding, support, and pricing.",
     "home.net.h": "A single integration, many connections",
-    "home.net.p": "Rather than maintaining point-to-point links with every counterpart, participants connect once to KBKx and reach the wider ecosystem. Supply flows outward to demand partners; bookings and settlement flow back — coordinated through one platform.",
+    "home.net.p": "Rather than maintaining point-to-point links with every counterpart, participants connect once to KabuK Exchange and reach the wider ecosystem. Supply flows outward to demand partners; bookings and settlement flow back — coordinated through one platform.",
     "home.net.li1": "Hotels and hotel groups publish supply",
     "home.net.li2": "OTAs, agencies, and wholesalers consume demand",
     "home.net.li3": "PMS and channel managers connect systems",
@@ -104,16 +104,16 @@ const TRANSLATIONS = {
     "serve.wholesalers": "Wholesalers & supply partners",
     "serve.connectivity": "Connectivity / PMS / channel managers",
 
-    "why.title": "Why KBKx",
+    "why.title": "Why KabuK Exchange",
     "why.subtitle": "Built for enterprise-grade, partner-oriented travel commerce.",
 
     "capabilities.title": "Platform capabilities",
     "capabilities.subtitle": "The building blocks of API-driven travel distribution.",
 
     "network.title": "One hub, connected to your ecosystem",
-    "network.subtitle": "KBKx sits at the center — connecting supply, demand, and connectivity partners.",
+    "network.subtitle": "KabuK Exchange sits at the center — connecting supply, demand, and connectivity partners.",
 
-    "ecosystem.title": "The KBKx ecosystem",
+    "ecosystem.title": "The KabuK Exchange ecosystem",
     "ecosystem.subtitle": "A directory of the participant types the platform is designed to serve. Sample data for internal review.",
     "ecosystem.filter": "Filter by category",
 
@@ -134,7 +134,7 @@ const TRANSLATIONS = {
     "partners.capabilities.title": "Capabilities",
     "partners.journey.title": "Integration journey",
 
-    "about.hero.eyebrow": "About KBKx",
+    "about.hero.eyebrow": "About KabuK Exchange",
     "about.hero.title": "Travel distribution infrastructure by KabuK Style Inc.",
     "about.mission.title": "Our mission",
     "about.who.title": "Who we support",
@@ -168,8 +168,8 @@ const TRANSLATIONS = {
     "cookie.accept": "Accept",
     "cookie.decline": "Decline",
 
-    "footer.about": "KBKx is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.",
-    "footer.site": "KBKx",
+    "footer.about": "KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.",
+    "footer.site": "KabuK Exchange",
     "footer.company": "KabuK Style Inc.",
     "footer.rights": "All rights reserved.",
     "footer.disclaimer": "This site is for internal review. URLs, emails, and partner data marked PLACEHOLDER are examples only."
@@ -193,7 +193,7 @@ const TRANSLATIONS = {
 
     "hero.eyebrow": "エンタープライズ向け旅行流通インフラ",
     "hero.title": "世界のホテル供給と需要を一つのプラットフォームでつなぐ",
-    "hero.subtitle": "KBKx は KabuK Style Inc. による B2B2B の旅行流通プラットフォームです。ホテル、OTA、旅行代理店、ホールセラー、テクノロジーパートナーを API 連携でつなぎます。",
+    "hero.subtitle": "KabuK Exchange は KabuK Style Inc. による B2B2B の旅行流通プラットフォームです。ホテル、OTA、旅行代理店、ホールセラー、テクノロジーパートナーを API 連携でつなぎます。",
     "hero.networkTitle": "接続マップ",
 
     "home.badge.planned": "予定",
@@ -238,7 +238,7 @@ const TRANSLATIONS = {
     "home.cap.ai.t": "将来の AI サポート",
     "home.cap.ai.d": "オンボーディング・サポート・料金設定のための AI 支援。",
     "home.net.h": "一つの連携で、多くの接続を",
-    "home.net.p": "すべての相手と個別に接続する代わりに、参加者は KBKx に一度つなぐだけで、より広いエコシステムに到達できます。供給は需要パートナーへ流れ、予約と決済は戻ってくる——すべて一つのプラットフォームで調整されます。",
+    "home.net.p": "すべての相手と個別に接続する代わりに、参加者は KabuK Exchange に一度つなぐだけで、より広いエコシステムに到達できます。供給は需要パートナーへ流れ、予約と決済は戻ってくる——すべて一つのプラットフォームで調整されます。",
     "home.net.li1": "ホテル・ホテルグループが供給を提供",
     "home.net.li2": "OTA・代理店・ホールセラーが需要を利用",
     "home.net.li3": "PMS・チャネルマネージャーがシステムを接続",
@@ -252,16 +252,16 @@ const TRANSLATIONS = {
     "serve.wholesalers": "ホールセラー・供給パートナー",
     "serve.connectivity": "接続 / PMS / チャネルマネージャー",
 
-    "why.title": "KBKx を選ぶ理由",
+    "why.title": "KabuK Exchange を選ぶ理由",
     "why.subtitle": "エンタープライズ品質で、パートナー志向の旅行取引のために。",
 
     "capabilities.title": "プラットフォームの機能",
     "capabilities.subtitle": "API 主導の旅行流通を支える構成要素。",
 
     "network.title": "一つのハブが、あなたのエコシステムをつなぐ",
-    "network.subtitle": "KBKx が中心となり、供給・需要・接続パートナーをつなぎます。",
+    "network.subtitle": "KabuK Exchange が中心となり、供給・需要・接続パートナーをつなぎます。",
 
-    "ecosystem.title": "KBKx エコシステム",
+    "ecosystem.title": "KabuK Exchange エコシステム",
     "ecosystem.subtitle": "本プラットフォームが対象とする参加者タイプの一覧です。内部レビュー用のサンプルデータです。",
     "ecosystem.filter": "カテゴリで絞り込む",
 
@@ -282,7 +282,7 @@ const TRANSLATIONS = {
     "partners.capabilities.title": "機能",
     "partners.journey.title": "連携までの流れ",
 
-    "about.hero.eyebrow": "KBKx について",
+    "about.hero.eyebrow": "KabuK Exchange について",
     "about.hero.title": "KabuK Style Inc. による旅行流通インフラ",
     "about.mission.title": "私たちのミッション",
     "about.who.title": "支援する対象",
@@ -316,8 +316,8 @@ const TRANSLATIONS = {
     "cookie.accept": "同意する",
     "cookie.decline": "拒否する",
 
-    "footer.about": "KBKx は KabuK Style Inc. による B2B2B 旅行流通プラットフォームです。世界のホテル供給と需要を API 連携でつなぎます。",
-    "footer.site": "KBKx",
+    "footer.about": "KabuK Exchange は KabuK Style Inc. による B2B2B 旅行流通プラットフォームです。世界のホテル供給と需要を API 連携でつなぎます。",
+    "footer.site": "KabuK Exchange",
     "footer.company": "KabuK Style Inc.",
     "footer.rights": "無断転載を禁じます。",
     "footer.disclaimer": "本サイトは内部レビュー用です。PLACEHOLDER と記載された URL・メール・パートナーデータはすべて例です。"
@@ -341,7 +341,7 @@ const TRANSLATIONS = {
 
     "hero.eyebrow": "엔터프라이즈 여행 유통 인프라",
     "hero.title": "글로벌 호텔 공급과 수요를 하나의 플랫폼으로 연결",
-    "hero.subtitle": "KBKx는 KabuK Style Inc.의 B2B2B 여행 유통 플랫폼으로, 호텔·OTA·여행사·홀세일러·기술 파트너를 API 연동으로 연결합니다.",
+    "hero.subtitle": "KabuK Exchange는 KabuK Style Inc.의 B2B2B 여행 유통 플랫폼으로, 호텔·OTA·여행사·홀세일러·기술 파트너를 API 연동으로 연결합니다.",
     "hero.networkTitle": "연결 지도",
 
     "home.badge.planned": "예정",
@@ -386,7 +386,7 @@ const TRANSLATIONS = {
     "home.cap.ai.t": "향후 AI 지원",
     "home.cap.ai.d": "온보딩·지원·가격 책정을 위한 AI 지원.",
     "home.net.h": "하나의 연동, 다양한 연결",
-    "home.net.p": "모든 상대와 개별적으로 연결하는 대신, 참여자는 KBKx에 한 번 연결하여 더 넓은 생태계에 도달합니다. 공급은 수요 파트너로 흐르고 예약과 정산은 되돌아오며, 모두 하나의 플랫폼에서 조정됩니다.",
+    "home.net.p": "모든 상대와 개별적으로 연결하는 대신, 참여자는 KabuK Exchange에 한 번 연결하여 더 넓은 생태계에 도달합니다. 공급은 수요 파트너로 흐르고 예약과 정산은 되돌아오며, 모두 하나의 플랫폼에서 조정됩니다.",
     "home.net.li1": "호텔 및 호텔 그룹이 공급을 게시",
     "home.net.li2": "OTA·여행사·홀세일러가 수요를 소비",
     "home.net.li3": "PMS·채널 매니저가 시스템을 연결",
@@ -400,16 +400,16 @@ const TRANSLATIONS = {
     "serve.wholesalers": "홀세일러 및 공급 파트너",
     "serve.connectivity": "연동 / PMS / 채널 매니저",
 
-    "why.title": "KBKx를 선택하는 이유",
+    "why.title": "KabuK Exchange를 선택하는 이유",
     "why.subtitle": "엔터프라이즈급, 파트너 중심 여행 거래를 위해 설계.",
 
     "capabilities.title": "플랫폼 기능",
     "capabilities.subtitle": "API 기반 여행 유통을 구성하는 요소.",
 
     "network.title": "하나의 허브, 당신의 생태계와 연결",
-    "network.subtitle": "KBKx가 중심에서 공급·수요·연동 파트너를 연결합니다.",
+    "network.subtitle": "KabuK Exchange가 중심에서 공급·수요·연동 파트너를 연결합니다.",
 
-    "ecosystem.title": "KBKx 생태계",
+    "ecosystem.title": "KabuK Exchange 생태계",
     "ecosystem.subtitle": "플랫폼이 지원하도록 설계된 참여자 유형 목록입니다. 내부 검토용 샘플 데이터입니다.",
     "ecosystem.filter": "카테고리로 필터",
 
@@ -430,7 +430,7 @@ const TRANSLATIONS = {
     "partners.capabilities.title": "기능",
     "partners.journey.title": "연동 여정",
 
-    "about.hero.eyebrow": "KBKx 소개",
+    "about.hero.eyebrow": "KabuK Exchange 소개",
     "about.hero.title": "KabuK Style Inc.의 여행 유통 인프라",
     "about.mission.title": "우리의 미션",
     "about.who.title": "지원 대상",
@@ -464,8 +464,8 @@ const TRANSLATIONS = {
     "cookie.accept": "동의",
     "cookie.decline": "거부",
 
-    "footer.about": "KBKx는 KabuK Style Inc.의 B2B2B 여행 유통 플랫폼으로, 글로벌 호텔 공급과 수요를 API 연동으로 연결합니다.",
-    "footer.site": "KBKx",
+    "footer.about": "KabuK Exchange는 KabuK Style Inc.의 B2B2B 여행 유통 플랫폼으로, 글로벌 호텔 공급과 수요를 API 연동으로 연결합니다.",
+    "footer.site": "KabuK Exchange",
     "footer.company": "KabuK Style Inc.",
     "footer.rights": "모든 권리 보유.",
     "footer.disclaimer": "이 사이트는 내부 검토용입니다. PLACEHOLDER로 표시된 URL·이메일·파트너 데이터는 예시입니다."
@@ -489,7 +489,7 @@ const TRANSLATIONS = {
 
     "hero.eyebrow": "企業級旅遊分銷基礎設施",
     "hero.title": "透過單一平台連結全球飯店供給與需求",
-    "hero.subtitle": "KBKx 是 KabuK Style Inc. 推出的 B2B2B 旅遊分銷平台，透過 API 連接飯店、OTA、旅行社、批發商與技術夥伴。",
+    "hero.subtitle": "KabuK Exchange 是 KabuK Style Inc. 推出的 B2B2B 旅遊分銷平台，透過 API 連接飯店、OTA、旅行社、批發商與技術夥伴。",
     "hero.networkTitle": "連結地圖",
 
     "home.badge.planned": "規劃中",
@@ -534,7 +534,7 @@ const TRANSLATIONS = {
     "home.cap.ai.t": "未來的 AI 支援",
     "home.cap.ai.d": "用於導入、支援與定價的 AI 協助。",
     "home.net.h": "一次串接，多方連結",
-    "home.net.p": "參與者無須與每個對象逐一建立點對點連線，只要與 KBKx 串接一次，即可觸及更廣的生態系。供給向需求夥伴流出，預訂與結算再流回——全部透過單一平台協調。",
+    "home.net.p": "參與者無須與每個對象逐一建立點對點連線，只要與 KabuK Exchange 串接一次，即可觸及更廣的生態系。供給向需求夥伴流出，預訂與結算再流回——全部透過單一平台協調。",
     "home.net.li1": "飯店與飯店集團提供供給",
     "home.net.li2": "OTA、旅行社與批發商取用需求",
     "home.net.li3": "PMS 與通路管理系統連接系統",
@@ -548,16 +548,16 @@ const TRANSLATIONS = {
     "serve.wholesalers": "批發商與供給夥伴",
     "serve.connectivity": "串接 / PMS / 通路管理系統",
 
-    "why.title": "為何選擇 KBKx",
+    "why.title": "為何選擇 KabuK Exchange",
     "why.subtitle": "為企業級、以夥伴為導向的旅遊交易而打造。",
 
     "capabilities.title": "平台能力",
     "capabilities.subtitle": "支撐 API 主導旅遊分銷的組成要素。",
 
     "network.title": "一個樞紐，連結您的生態系",
-    "network.subtitle": "KBKx 位於核心，連結供給、需求與串接夥伴。",
+    "network.subtitle": "KabuK Exchange 位於核心，連結供給、需求與串接夥伴。",
 
-    "ecosystem.title": "KBKx 生態系",
+    "ecosystem.title": "KabuK Exchange 生態系",
     "ecosystem.subtitle": "本平台設計支援的參與者類型目錄。此為內部檢視用的範例資料。",
     "ecosystem.filter": "依類別篩選",
 
@@ -578,7 +578,7 @@ const TRANSLATIONS = {
     "partners.capabilities.title": "能力",
     "partners.journey.title": "串接歷程",
 
-    "about.hero.eyebrow": "關於 KBKx",
+    "about.hero.eyebrow": "關於 KabuK Exchange",
     "about.hero.title": "KabuK Style Inc. 的旅遊分銷基礎設施",
     "about.mission.title": "我們的使命",
     "about.who.title": "支援對象",
@@ -612,8 +612,8 @@ const TRANSLATIONS = {
     "cookie.accept": "接受",
     "cookie.decline": "拒絕",
 
-    "footer.about": "KBKx 是 KabuK Style Inc. 推出的 B2B2B 旅遊分銷平台，透過 API 連結全球飯店供給與需求。",
-    "footer.site": "KBKx",
+    "footer.about": "KabuK Exchange 是 KabuK Style Inc. 推出的 B2B2B 旅遊分銷平台，透過 API 連結全球飯店供給與需求。",
+    "footer.site": "KabuK Exchange",
     "footer.company": "KabuK Style Inc.",
     "footer.rights": "版權所有。",
     "footer.disclaimer": "本網站僅供內部檢視。標示為 PLACEHOLDER 的網址、電子郵件與夥伴資料皆為範例。"
@@ -637,7 +637,7 @@ const TRANSLATIONS = {
 
     "hero.eyebrow": "بنية تحتية لتوزيع السفر على مستوى المؤسسات",
     "hero.title": "اربط عرض الفنادق والطلب عالميًا عبر منصة واحدة",
-    "hero.subtitle": "‏KBKx منصة توزيع سفر بنموذج B2B2B من KabuK Style Inc.، تربط الفنادق ووكالات السفر الإلكترونية والوكالات وتجار الجملة وشركاء التقنية عبر واجهات برمجية.",
+    "hero.subtitle": "‏KabuK Exchange منصة توزيع سفر بنموذج B2B2B من KabuK Style Inc.، تربط الفنادق ووكالات السفر الإلكترونية والوكالات وتجار الجملة وشركاء التقنية عبر واجهات برمجية.",
     "hero.networkTitle": "خريطة الاتصال",
 
     "home.badge.planned": "مخطط له",
@@ -682,7 +682,7 @@ const TRANSLATIONS = {
     "home.cap.ai.t": "دعم الذكاء الاصطناعي المستقبلي",
     "home.cap.ai.d": "مساعدة بالذكاء الاصطناعي للإعداد والدعم والتسعير.",
     "home.net.h": "تكامل واحد، اتصالات متعددة",
-    "home.net.p": "بدلاً من الحفاظ على روابط ثنائية مع كل طرف، يتصل المشاركون بـ KBKx مرة واحدة ويصلون إلى المنظومة الأوسع. يتدفق العرض إلى شركاء الطلب، وتعود الحجوزات والتسويات — كل ذلك منسَّق عبر منصة واحدة.",
+    "home.net.p": "بدلاً من الحفاظ على روابط ثنائية مع كل طرف، يتصل المشاركون بـ KabuK Exchange مرة واحدة ويصلون إلى المنظومة الأوسع. يتدفق العرض إلى شركاء الطلب، وتعود الحجوزات والتسويات — كل ذلك منسَّق عبر منصة واحدة.",
     "home.net.li1": "الفنادق ومجموعات الفنادق تنشر العرض",
     "home.net.li2": "وكالات السفر الإلكترونية والوكالات وتجار الجملة يستهلكون الطلب",
     "home.net.li3": "أنظمة إدارة الفنادق ومديرو القنوات يربطون الأنظمة",
@@ -696,16 +696,16 @@ const TRANSLATIONS = {
     "serve.wholesalers": "تجار الجملة وشركاء العرض",
     "serve.connectivity": "الربط / أنظمة إدارة الفنادق / مديرو القنوات",
 
-    "why.title": "لماذا KBKx",
+    "why.title": "لماذا KabuK Exchange",
     "why.subtitle": "مصمم لتجارة سفر على مستوى المؤسسات وموجهة نحو الشركاء.",
 
     "capabilities.title": "قدرات المنصة",
     "capabilities.subtitle": "اللبنات الأساسية لتوزيع السفر المبني على الواجهات البرمجية.",
 
     "network.title": "مركز واحد متصل بمنظومتك",
-    "network.subtitle": "‏KBKx في المركز — يربط العرض والطلب وشركاء الربط.",
+    "network.subtitle": "‏KabuK Exchange في المركز — يربط العرض والطلب وشركاء الربط.",
 
-    "ecosystem.title": "منظومة KBKx",
+    "ecosystem.title": "منظومة KabuK Exchange",
     "ecosystem.subtitle": "دليل لأنواع المشاركين التي صُممت المنصة لخدمتها. بيانات عينة للمراجعة الداخلية.",
     "ecosystem.filter": "تصفية حسب الفئة",
 
@@ -726,7 +726,7 @@ const TRANSLATIONS = {
     "partners.capabilities.title": "القدرات",
     "partners.journey.title": "رحلة الربط",
 
-    "about.hero.eyebrow": "عن KBKx",
+    "about.hero.eyebrow": "عن KabuK Exchange",
     "about.hero.title": "بنية تحتية لتوزيع السفر من KabuK Style Inc.",
     "about.mission.title": "مهمتنا",
     "about.who.title": "من ندعم",
@@ -760,8 +760,8 @@ const TRANSLATIONS = {
     "cookie.accept": "قبول",
     "cookie.decline": "رفض",
 
-    "footer.about": "‏KBKx منصة توزيع سفر بنموذج B2B2B من KabuK Style Inc.، تربط عرض الفنادق والطلب عالميًا عبر واجهات برمجية.",
-    "footer.site": "KBKx",
+    "footer.about": "‏KabuK Exchange منصة توزيع سفر بنموذج B2B2B من KabuK Style Inc.، تربط عرض الفنادق والطلب عالميًا عبر واجهات برمجية.",
+    "footer.site": "KabuK Exchange",
     "footer.company": "KabuK Style Inc.",
     "footer.rights": "جميع الحقوق محفوظة.",
     "footer.disclaimer": "هذا الموقع للمراجعة الداخلية. الروابط والبريد الإلكتروني وبيانات الشركاء المميزة بـ PLACEHOLDER هي أمثلة فقط."

@@ -1,6 +1,6 @@
-# KBKx — Marketing Website
+# KabuK Exchange — Marketing Website
 
-A static marketing website for **KBKx**, the global travel distribution platform by **KabuK Style Inc.** It introduces the platform, explains who it serves, and gives hotels and partners a way to get in touch.
+A static marketing website for **KabuK Exchange**, the global travel distribution platform by **KabuK Style Inc.** It introduces the platform, explains who it serves, and gives hotels and partners a way to get in touch.
 
 Built with **plain HTML, CSS, and vanilla JavaScript** plus a couple of **JSON config files**. No framework, no build step, no npm.
 
@@ -12,7 +12,7 @@ Built with **plain HTML, CSS, and vanilla JavaScript** plus a couple of **JSON c
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Homepage (hero network, who we serve, why KBKx, capabilities, connections, ecosystem, CTA) |
+| `index.html` | Homepage (hero network, who we serve, why KabuK Exchange, capabilities, connections, ecosystem, CTA) |
 | `hotels.html` | For Hotels page |
 | `partners.html` | For Partners page |
 | `about.html` | About Us page |
@@ -79,10 +79,16 @@ Add, remove, or reorder entries freely. The homepage rebuilds the directory and 
 
 Edit **`site-config.json`**:
 
-- `footerLinks` — the **KBKx** column (internal pages).
+- `footerLinks` — the **KabuK Exchange** column (internal pages).
 - `companyLinks` — the **KabuK Style Inc.** column (KabuK Style, HafH, News, Contact, Careers).
 
 Each link is `{ "label": "...", "href": "..." }`. Links starting with `http` open in a new tab automatically.
+
+**Footer icon variant (A/B):** the KabuK Style Inc. column can render as icon buttons
+instead of text links. Set `"footerCompanyStyle": "icons"` (default is `"text"`) in
+`site-config.json`. Each `companyLinks` entry takes an optional `"icon"` key
+(`building`, `bed`, `newspaper`, `mail`, `briefcase`, or any key in `ICON_PATHS`);
+the label is used as the accessible tooltip/aria-label.
 
 ### Partner Login URL (admin console)
 
@@ -144,6 +150,23 @@ with CJK and Arabic fallbacks — no web font is downloaded, so there are zero e
 requests and text paints instantly. To adopt a brand web font later, self-host the
 files (to keep the project asset-free) and prepend the family to `--font`.
 
+## Color themes
+
+A palette button in the header lets visitors switch between color themes — **Ocean**
+(default blue), **Sky** (lighter blue), **Sunset** (red), **Amber** (orange), and
+**Forest** (green). The choice is saved in `localStorage` (`kbkx-theme`).
+
+Each theme only overrides a handful of CSS custom properties (accent colors + the
+dark-base navy tokens + hero glow) under `:root[data-theme="…"]` in `styles.css`.
+To tweak a theme, edit those tokens; to add one, add a `:root[data-theme="mytheme"]`
+block and an entry to the `THEMES` array in `script.js`. To change the default,
+reorder `THEMES` (the CSS default — no attribute — is "ocean").
+
+Note: the two decorative network graphics (the hero map and the embedded
+partnership diagram) use fixed blues in their SVG source and do **not** retint with
+the theme — intentional, so the diagrams stay legible. Everything else (accents,
+buttons, headings, gradients, wordmark accent) follows the selected theme.
+
 ## Cookie / analytics consent
 
 A lightweight consent banner appears on first visit. Analytics only load **after** the
@@ -155,6 +178,17 @@ There is no analytics provider wired in yet — drop your snippet inside the
 
 `index.html` and `about.html` include JSON-LD (`Organization` + `WebSite`) for richer
 search results. Update the URLs there (and the PLACEHOLDER domain) before launch.
+
+## Homepage connectivity diagram
+
+The "One hub, connected to your ecosystem" section on the homepage is an inline SVG
+(supply → hub → partners flow) living in `index.html`, styled by the `.kx-*` rules in
+`styles.css`. Its ids and classes are `kx-`namespaced so they can't collide with the
+site's `.card`/`.node` styles. To edit node labels or positions, edit the SVG markup
+directly. It scrolls horizontally on narrow screens (so labels stay legible), and all
+of its motion — the flowing dashes, hub rings, and traveling dots — is disabled under
+`prefers-reduced-motion`. Note: the labels *inside* the diagram are English only; the
+surrounding heading, subtitle, and legend are localized.
 
 ## Icons, forms, and social/SEO
 

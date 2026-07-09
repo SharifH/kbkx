@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terms of Use — KBKx</title>
-  <meta name="description" content="Placeholder terms of use for the KBKx marketing site." />
+  <title>Terms of Use — KabuK Exchange</title>
+  <meta name="description" content="Placeholder terms of use for the KabuK Exchange marketing site." />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#0a1330" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -15,25 +15,30 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="KBKx home">
-        <span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span>
+      <a class="brand" href="index.html" aria-label="KabuK Exchange home">
+        <span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span>
       </a>
-      <nav class="main-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-          <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
-          <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
-          <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <select id="lang-select" class="lang-select" aria-label="Select language"></select>
-        <div class="header-cta-desktop">
+
+      <!-- Everything inside .header-menu collapses into the hamburger on small screens -->
+      <div class="header-menu" id="primary-menu">
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
+            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
           <a class="btn btn-ghost" data-role="partner-login" href="#" rel="noopener" data-i18n="cta.login">Partner Login</a>
           <a class="btn btn-secondary" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
           <a class="btn btn-primary" href="link-your-property.html" data-i18n="cta.linkProperty">Link Your Property</a>
         </div>
-        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+
+      <div class="header-actions">
+        <select id="lang-select" class="lang-select" aria-label="Select language"></select>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-controls="primary-menu" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
@@ -50,7 +55,7 @@
           <p>By using this website you would agree to these terms. This draft is a structural placeholder and is not yet a binding agreement.</p>
 
           <h3>Use of the site</h3>
-          <p>The site provides information about the KBKx platform operated by KabuK Style Inc. Content marked PLACEHOLDER is illustrative and subject to change.</p>
+          <p>The site provides information about the KabuK Exchange platform operated by KabuK Style Inc. Content marked PLACEHOLDER is illustrative and subject to change.</p>
 
           <h3>Forward-looking statements</h3>
           <p>Some capabilities are described as planned or on our roadmap. These are not commitments and may change.</p>
@@ -69,10 +74,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="index.html" aria-label="KBKx home"><span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span></a>
-          <p class="footer-about" data-i18n="footer.about">KBKx is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
+          <a class="brand" href="index.html" aria-label="KabuK Exchange home"><span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span></a>
+          <p class="footer-about" data-i18n="footer.about">KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
         </div>
-        <nav class="footer-col" aria-label="KBKx links"><h4 data-i18n="footer.site">KBKx</h4><ul data-footer="site"></ul></nav>
+        <nav class="footer-col" aria-label="KabuK Exchange links"><h4 data-i18n="footer.site">KabuK Exchange</h4><ul data-footer="site"></ul></nav>
         <nav class="footer-col" aria-label="KabuK Style Inc. links"><h4 data-i18n="footer.company">KabuK Style Inc.</h4><ul data-footer="company"></ul></nav>
       </div>
       <div class="footer-bottom">

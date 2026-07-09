@@ -1,5 +1,5 @@
 {
-  "_comment": "KBKx site configuration. Non-engineers can safely edit the values below. Placeholder values are marked with PLACEHOLDER — replace before going live.",
+  "_comment": "KabuK Exchange site configuration. Non-engineers can safely edit the values below. Placeholder values are marked with PLACEHOLDER — replace before going live.",
 
   "adminConsoleUrl": "https://console.kbkx.example.com/login",
 
@@ -10,6 +10,9 @@
   },
 
   "formMode": "mailto",
+
+  "_footerCompanyStyleHelp": "How the KabuK Style Inc. footer column renders: 'text' (default) or 'icons' (A/B candidate — shows the service icons below).",
+  "footerCompanyStyle": "text",
 
   "apiEndpoint": "https://api.kbkx.example.com/v1/leads",
 
@@ -25,10 +28,10 @@
   ],
 
   "companyLinks": [
-    { "label": "KabuK Style Inc.", "href": "https://www.kabukstyle.com", "note": "PLACEHOLDER URL" },
-    { "label": "HafH", "href": "https://www.hafh.com", "note": "PLACEHOLDER URL" },
-    { "label": "KabuK Style News", "href": "https://www.kabukstyle.com/news", "note": "PLACEHOLDER URL" },
-    { "label": "Contact", "href": "mailto:hello@kbkx.example.com", "note": "PLACEHOLDER EMAIL" },
-    { "label": "Careers", "href": "https://www.kabukstyle.com/careers", "note": "PLACEHOLDER URL" }
+    { "label": "KabuK Style Inc.", "href": "https://www.kabukstyle.com", "icon": "building", "note": "PLACEHOLDER URL" },
+    { "label": "HafH", "href": "https://www.hafh.com", "icon": "bed", "note": "PLACEHOLDER URL" },
+    { "label": "KabuK Style News", "href": "https://www.kabukstyle.com/news", "icon": "newspaper", "note": "PLACEHOLDER URL" },
+    { "label": "Contact", "href": "mailto:hello@kbkx.example.com", "icon": "mail", "note": "PLACEHOLDER EMAIL" },
+    { "label": "Careers", "href": "https://www.kabukstyle.com/careers", "icon": "briefcase", "note": "PLACEHOLDER URL" }
   ]
 }

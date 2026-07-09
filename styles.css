@@ -44,8 +44,11 @@
   --gutter: clamp(16px, 4vw, 40px);
   --header-h: 72px;
 
-  --grad-hero: radial-gradient(1200px 600px at 15% -10%, #1b2e6e 0%, transparent 60%),
-               radial-gradient(1000px 500px at 100% 0%, #123 0%, transparent 55%),
+  /* Hero glow stops are variables so color themes can retint the dark base. */
+  --hero-glow-1: #1b2e6e;
+  --hero-glow-2: #112a44;
+  --grad-hero: radial-gradient(1200px 600px at 15% -10%, var(--hero-glow-1) 0%, transparent 60%),
+               radial-gradient(1000px 500px at 100% 0%, var(--hero-glow-2) 0%, transparent 55%),
                linear-gradient(160deg, var(--navy-900), var(--navy-800));
   --grad-accent: linear-gradient(120deg, var(--accent), var(--accent-3));
 
@@ -57,6 +60,35 @@
           "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
           "Noto Sans JP", "Noto Sans KR", "Noto Sans TC", "Noto Sans Arabic",
           "Apple Color Emoji", sans-serif;
+}
+
+/* ---------- Color themes ----------
+   Switchable at runtime via <html data-theme="…"> (see initThemeSwitcher in
+   script.js). Each theme only overrides accent + dark-base tokens; everything
+   else inherits. "ocean" is the default (no attribute needed). */
+:root[data-theme="sky"] {          /* lighter blue */
+  --accent: #3b82f6; --accent-2: #38bdf8; --accent-3: #6366f1;
+  --accent-soft: rgba(59,130,246,0.12);
+  --navy-900: #16264f; --navy-800: #1d3268; --navy-700: #264088; --navy-600: #3050a0;
+  --hero-glow-1: #2a4890; --hero-glow-2: #1a3358;
+}
+:root[data-theme="sunset"] {       /* red */
+  --accent: #e11d48; --accent-2: #fb7185; --accent-3: #f43f5e;
+  --accent-soft: rgba(225,29,72,0.12);
+  --navy-900: #1b0f1a; --navy-800: #2b1526; --navy-700: #3d1c33; --navy-600: #52243f;
+  --hero-glow-1: #6d1f3f; --hero-glow-2: #2a1220;
+}
+:root[data-theme="amber"] {        /* orange */
+  --accent: #ea580c; --accent-2: #f59e0b; --accent-3: #f97316;
+  --accent-soft: rgba(234,88,12,0.12);
+  --navy-900: #1a1206; --navy-800: #2a1c0a; --navy-700: #3c290f; --navy-600: #513714;
+  --hero-glow-1: #7a4a12; --hero-glow-2: #2c1c0a;
+}
+:root[data-theme="forest"] {       /* green */
+  --accent: #059669; --accent-2: #34d399; --accent-3: #10b981;
+  --accent-soft: rgba(5,150,105,0.12);
+  --navy-900: #08201a; --navy-800: #0c2f25; --navy-700: #114034; --navy-600: #175446;
+  --hero-glow-1: #155e48; --hero-glow-2: #0c2a20;
 }
 
 /* ---------- Base / reset ---------- */
@@ -147,6 +179,9 @@ p { margin: 0 0 1rem; }
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+/* Header gets a slightly wider container than page content so the full nav +
+   3 CTAs fit on one row before collapsing to the hamburger. */
+.site-header .container { max-width: 1400px; }
 .header-inner {
   display: flex; align-items: center; gap: 20px;
   min-height: var(--header-h);
@@ -163,20 +198,53 @@ p { margin: 0 0 1rem; }
 }
 .brand-x { color: var(--accent-2); }
 
-.main-nav { margin-inline-start: 8px; }
-.main-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+/* Collapsible menu wrapper: nav links + CTAs together. On desktop it fills the
+   space between the brand and the language selector; below the breakpoint it
+   drops down from the hamburger as ONE panel (so links + CTAs both appear). */
+.header-menu {
+  display: flex; align-items: center; flex: 1; gap: 24px;
+  justify-content: space-between; margin-inline-start: 8px;
+}
+.main-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; margin: 0; padding: 0; }
 .main-nav a {
-  display: block; padding: 8px 12px; border-radius: 8px;
+  display: block; padding: 8px 10px; border-radius: 8px; white-space: nowrap;
   color: rgba(255,255,255,0.82); font-weight: 500;
 }
 .main-nav a:hover, .main-nav a[aria-current="page"] {
   color: #fff; background: rgba(255,255,255,0.08); text-decoration: none;
 }
+.header-cta { display: flex; gap: 8px; align-items: center; }
+/* Compact header CTAs so the full row fits before the hamburger breakpoint.
+   (They return to full size when stacked in the mobile menu — see below.) */
+.header-cta .btn { padding: 9px 14px; font-size: 0.9rem; }
 
 .header-actions {
-  margin-inline-start: auto;
   display: flex; align-items: center; gap: 10px;
 }
+
+/* Theme switcher (palette button + swatch popover) */
+.theme-switch { position: relative; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; cursor: pointer; color: #fff; font-size: 1.05rem;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.16); }
+.theme-menu {
+  display: none; position: absolute; inset-inline-end: 0; top: calc(100% + 10px);
+  background: var(--white); color: var(--ink); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+  padding: 12px; z-index: 120; min-width: 168px;
+}
+.theme-switch.open .theme-menu { display: block; }
+.theme-menu-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.theme-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.swatch {
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer; padding: 0;
+  border: 2px solid transparent; box-shadow: 0 0 0 1px var(--border);
+}
+.swatch[aria-pressed="true"] { border-color: var(--ink); }
 
 /* Language selector */
 .lang-select {
@@ -196,23 +264,24 @@ p { margin: 0 0 1rem; }
   width: 42px; height: 42px; cursor: pointer; color: #fff; font-size: 1.2rem;
 }
 
-.header-cta-desktop { display: flex; gap: 10px; align-items: center; }
-
-@media (max-width: 980px) {
+/* Below this width the full nav + 3 CTAs no longer fit next to the wordmark,
+   so collapse everything into the hamburger. */
+@media (max-width: 1280px) {
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-  .main-nav, .header-cta-desktop { display: none; }
-  .header-actions { margin-inline-start: auto; }
+  .header-inner { position: relative; }
+  .header-menu { display: none; }
 
-  .site-header.open .main-nav,
-  .site-header.open .header-cta-desktop {
+  .site-header.open .header-menu {
     display: flex; flex-direction: column; align-items: stretch;
     position: absolute; left: 0; right: 0; top: 100%;
-    background: var(--navy-800); padding: 16px var(--gutter);
-    border-bottom: 1px solid rgba(255,255,255,0.1); gap: 8px;
+    background: var(--navy-800); padding: 16px; gap: 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow-lg);
   }
-  .site-header.open .header-cta-desktop { top: 100%; }
-  .site-header.open .main-nav ul { flex-direction: column; }
-  .site-header.open .header-cta-desktop .btn { width: 100%; }
+  .site-header.open .main-nav ul { flex-direction: column; gap: 4px; }
+  .site-header.open .header-cta { flex-direction: column; }
+  .site-header.open .header-cta .btn { width: 100%; }
 }
 
 /* ---------- Sections ---------- */
@@ -478,9 +547,14 @@ section { padding: clamp(48px, 8vw, 96px) 0; }
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .footer-grid {
-  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 40px;
+  display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr 1fr; gap: 40px; margin-bottom: 40px;
 }
-@media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+.footer-grid > * { min-width: 0; }   /* let columns shrink instead of overflowing */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
 .footer-brand .brand { margin-bottom: 14px; }
 .footer-about { max-width: 42ch; font-size: 0.95rem; }
 .footer-col h4 {
@@ -499,6 +573,58 @@ section { padding: clamp(48px, 8vw, 96px) 0; }
   margin-top: 14px; font-size: 0.8rem; color: #6d78a3;
   background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12);
   padding: 10px 14px; border-radius: var(--radius-sm);
+}
+
+/* Footer icon variant (A/B): company links rendered as icon buttons.
+   Enabled by "footerCompanyStyle": "icons" in site-config.json. */
+.footer-col .footer-icons { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.footer-col .footer-icon {
+  width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #cdd6f4; transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+.footer-col .footer-icon:hover { background: rgba(255,255,255,0.14); color: #fff; transform: translateY(-2px); }
+.footer-col .footer-icon svg { width: 22px; height: 22px; }
+
+/* ---------- Embedded partnership diagram (kx-*) ----------
+   Adapted from a standalone diagram. All ids/classes are kx-namespaced so the
+   site's .card/.node rules never touch the SVG. Animations mirror the source
+   and are fully disabled under prefers-reduced-motion. */
+.kx-diagram {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+}
+.kx-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.kx-svg { width: 100%; height: auto; display: block; overflow: visible; font-family: var(--font); }
+/* Below this width the whole diagram would be too small to read, so let it
+   scroll horizontally inside its card instead of shrinking further. */
+@media (max-width: 760px) { .kx-svg { min-width: 680px; } }
+
+.kx-node { opacity: 0; animation: kxNodeIn .7s cubic-bezier(.2,.7,.3,1) forwards; transform-box: fill-box; transform-origin: center; }
+@keyframes kxNodeIn { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+.kx-card { transition: filter .25s ease; }
+.kx-node:hover .kx-card { filter: brightness(.985) drop-shadow(0 6px 18px rgba(46,107,255,.18)); }
+
+.kx-ring { transform-box: fill-box; transform-origin: center; animation: kxRing 3.2s ease-out infinite; }
+.kx-ring.kx-r2 { animation-delay: 1.06s; }
+.kx-ring.kx-r3 { animation-delay: 2.12s; }
+@keyframes kxRing { 0% { transform: scale(.62); opacity: .55; } 70% { opacity: .12; } 100% { transform: scale(1.25); opacity: 0; } }
+.kx-hubGlow { transform-box: fill-box; transform-origin: center; animation: kxBreathe 4s ease-in-out infinite; }
+@keyframes kxBreathe { 0%,100% { transform: scale(1); opacity: .5; } 50% { transform: scale(1.06); opacity: .8; } }
+
+.kx-flow { stroke-dasharray: 3 9; animation: kxDash 1.6s linear infinite; }
+@keyframes kxDash { to { stroke-dashoffset: -12; } }
+
+.kx-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center; margin-top: 24px; }
+.kx-legend li { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kx-node { opacity: 1 !important; animation: none !important; }
+  .kx-ring, .kx-hubGlow, .kx-flow { animation: none !important; }
+  #kx-pulses { display: none !important; }  /* stops the SMIL traveling dots */
 }
 
 /* ---------- Cookie consent banner ---------- */

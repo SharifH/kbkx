@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KBKx — Global travel distribution infrastructure by KabuK Style Inc.</title>
-  <meta name="description" content="KBKx is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
+  <title>KabuK Exchange — Global travel distribution infrastructure by KabuK Style Inc.</title>
+  <meta name="description" content="KabuK Exchange is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
   <link rel="canonical" href="https://www.kbkx.example.com/index.html" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <!-- Open Graph / social share (PLACEHOLDER domain + image) -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="KBKx" />
-  <meta property="og:title" content="KBKx — Global travel distribution infrastructure by KabuK Style Inc." />
-  <meta property="og:description" content="KBKx is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
+  <meta property="og:site_name" content="KabuK Exchange" />
+  <meta property="og:title" content="KabuK Exchange — Global travel distribution infrastructure by KabuK Style Inc." />
+  <meta property="og:description" content="KabuK Exchange is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
   <meta property="og:url" content="https://www.kbkx.example.com/index.html" />
   <meta property="og:image" content="https://www.kbkx.example.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KBKx — Global travel distribution infrastructure by KabuK Style Inc." />
-  <meta name="twitter:description" content="KBKx is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
+  <meta name="twitter:title" content="KabuK Exchange — Global travel distribution infrastructure by KabuK Style Inc." />
+  <meta name="twitter:description" content="KabuK Exchange is a B2B2B travel distribution platform connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity." />
   <meta name="twitter:image" content="https://www.kbkx.example.com/og-image.png" />
   <meta name="theme-color" content="#0a1330" />
   <link rel="stylesheet" href="styles.css" />
@@ -26,9 +26,9 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "KBKx",
+    "name": "KabuK Exchange",
     "legalName": "KabuK Style Inc.",
-    "description": "KBKx is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.",
+    "description": "KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.",
     "url": "https://www.kbkx.example.com/",
     "logo": "https://www.kbkx.example.com/favicon.svg",
     "parentOrganization": { "@type": "Organization", "name": "KabuK Style Inc." }
@@ -38,7 +38,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "KBKx",
+    "name": "KabuK Exchange",
     "url": "https://www.kbkx.example.com/"
   }
   </script>
@@ -49,25 +49,30 @@
   <!-- ============================ HEADER ============================ -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="KBKx home">
-        <span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span>
+      <a class="brand" href="index.html" aria-label="KabuK Exchange home">
+        <span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span>
       </a>
-      <nav class="main-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-          <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
-          <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
-          <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <select id="lang-select" class="lang-select" aria-label="Select language"></select>
-        <div class="header-cta-desktop">
+
+      <!-- Everything inside .header-menu collapses into the hamburger on small screens -->
+      <div class="header-menu" id="primary-menu">
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
+            <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
+            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
           <a class="btn btn-ghost" data-role="partner-login" href="#" rel="noopener" data-i18n="cta.login">Partner Login</a>
           <a class="btn btn-secondary" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
           <a class="btn btn-primary" href="link-your-property.html" data-i18n="cta.linkProperty">Link Your Property</a>
         </div>
-        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+
+      <div class="header-actions">
+        <select id="lang-select" class="lang-select" aria-label="Select language"></select>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-controls="primary-menu" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
@@ -80,7 +85,7 @@
           <span class="eyebrow" data-i18n="hero.eyebrow">Enterprise travel distribution infrastructure</span>
           <h1 data-i18n="hero.title">Connect global hotel supply and demand through one platform</h1>
           <p class="lead" data-i18n="hero.subtitle">
-            KBKx is a B2B2B travel distribution platform by KabuK Style Inc. — connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity.
+            KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc. — connecting hotels, OTAs, agencies, wholesalers, and technology partners through API-driven connectivity.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
@@ -98,7 +103,7 @@
           <div class="network-card">
             <span class="network-label" data-i18n="hero.networkTitle">Live connectivity map</span>
             <svg class="network-svg" viewBox="0 0 520 380" role="img"
-                 aria-label="Diagram showing KBKx at the center connecting hotels, OTAs, travel agencies, wholesalers, PMS and channel managers, and KabuK services.">
+                 aria-label="Diagram showing KabuK Exchange at the center connecting hotels, OTAs, travel agencies, wholesalers, PMS and channel managers, and KabuK services.">
               <defs>
                 <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stop-color="#3b82f6" />
@@ -158,7 +163,7 @@
               <g aria-hidden="true">
                 <circle class="hub-ring animated" cx="260" cy="190" r="44" />
                 <circle class="node-hub" cx="260" cy="190" r="44" />
-                <text class="hub-label" x="260" y="195" text-anchor="middle">KBKx</text>
+                <text class="hub-label" x="260" y="195" text-anchor="middle">KabuK Exchange</text>
               </g>
             </svg>
           </div>
@@ -209,12 +214,12 @@
       </div>
     </section>
 
-    <!-- ============================ WHY KBKx ============================ -->
+    <!-- ============================ WHY KabuK Exchange ============================ -->
     <section>
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow" data-i18n="why.title">Why KBKx</span>
-          <h2 data-i18n="why.title">Why KBKx</h2>
+          <span class="eyebrow" data-i18n="why.title">Why KabuK Exchange</span>
+          <h2 data-i18n="why.title">Why KabuK Exchange</h2>
           <p class="lead" data-i18n="why.subtitle">Built for enterprise-grade, partner-oriented travel commerce.</p>
         </div>
         <div class="grid grid-3">
@@ -311,60 +316,270 @@
         <div class="section-head center reveal">
           <span class="eyebrow" data-i18n="network.title">Connectivity</span>
           <h2 data-i18n="network.title">One hub, connected to your ecosystem</h2>
-          <p class="lead" data-i18n="network.subtitle">KBKx sits at the center — connecting supply, demand, and connectivity partners.</p>
+          <p class="lead" data-i18n="network.subtitle">KabuK Exchange sits at the center — connecting supply, demand, and connectivity partners.</p>
         </div>
-        <div class="split">
-          <div class="network-card section-dark reveal" style="background: var(--grad-hero);">
-            <svg class="network-svg" viewBox="0 0 520 380" role="img"
-                 aria-label="KBKx central hub connecting hotels, OTAs, travel agents, wholesalers, PMS and channel managers, and KabuK services.">
-              <defs>
-                <radialGradient id="hubGrad2" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#23c4c9" />
-                  <stop offset="100%" stop-color="#2e6cf6" />
-                </radialGradient>
-              </defs>
-              <g aria-hidden="true">
-                <line class="link-line animated" x1="260" y1="190" x2="260" y2="55" />
-                <line class="link-line animated" x1="260" y1="190" x2="386" y2="118" />
-                <line class="link-line animated" x1="260" y1="190" x2="386" y2="262" />
-                <line class="link-line animated" x1="260" y1="190" x2="260" y2="325" />
-                <line class="link-line animated" x1="260" y1="190" x2="134" y2="262" />
-                <line class="link-line animated" x1="260" y1="190" x2="134" y2="118" />
-              </g>
-              <g aria-hidden="true">
-                <g><circle class="node-circle" cx="260" cy="55" r="34" /><text class="node-label" x="260" y="59" text-anchor="middle">Hotels</text></g>
-                <g><circle class="node-circle" cx="386" cy="118" r="34" /><text class="node-label" x="386" y="122" text-anchor="middle">OTAs</text></g>
-                <g><circle class="node-circle" cx="386" cy="262" r="34" /><text class="node-label" x="386" y="266" text-anchor="middle">Agents</text></g>
-                <g><circle class="node-circle" cx="260" cy="325" r="34" /><text class="node-label" x="260" y="329" text-anchor="middle">Wholesale</text></g>
-                <g><circle class="node-circle" cx="134" cy="262" r="34" /><text class="node-label" x="134" y="266" text-anchor="middle">PMS / CM</text></g>
-                <g><circle class="node-circle" cx="134" cy="118" r="34" /><text class="node-label" x="134" y="122" text-anchor="middle">KabuK</text></g>
-              </g>
-              <g aria-hidden="true">
-                <circle class="packet p0" cx="260" cy="190" r="3.5" />
-                <circle class="packet p1" cx="260" cy="190" r="3.5" />
-                <circle class="packet p2" cx="260" cy="190" r="3.5" />
-                <circle class="packet p3" cx="260" cy="190" r="3.5" />
-                <circle class="packet p4" cx="260" cy="190" r="3.5" />
-                <circle class="packet p5" cx="260" cy="190" r="3.5" />
-              </g>
-              <g aria-hidden="true">
-                <circle class="hub-ring animated" cx="260" cy="190" r="44" style="stroke: var(--accent-2);" />
-                <circle class="node-hub" cx="260" cy="190" r="44" fill="url(#hubGrad2)" />
-                <text class="hub-label" x="260" y="195" text-anchor="middle">KBKx</text>
-              </g>
-            </svg>
-          </div>
-          <div class="reveal" data-delay="1">
-            <h3 data-i18n="home.net.h">A single integration, many connections</h3>
-            <p class="prose" data-i18n="home.net.p">Rather than maintaining point-to-point links with every counterpart, participants connect once to KBKx and reach the wider ecosystem. Supply flows outward to demand partners; bookings and settlement flow back — coordinated through one platform.</p>
-            <ul class="check-list">
-              <li data-i18n="home.net.li1">Hotels and hotel groups publish supply</li>
-              <li data-i18n="home.net.li2">OTAs, agencies, and wholesalers consume demand</li>
-              <li><span data-i18n="home.net.li3">PMS and channel managers connect systems</span> <span class="badge badge-planned" data-i18n="home.badge.planned">Planned</span></li>
-              <li data-i18n="home.net.li4">KabuK internal services extend reach</li>
-            </ul>
+        <div class="kx-diagram reveal" role="img" aria-label="Diagram: KabuK Exchange aggregates hotel inventory from direct hotel contracts, wholesalers and bedbanks, and suppliers, then distributes it to OTAs and marketplaces, travel agents, wholesalers and suppliers, PMS and channel managers, technology partners, destination partners, and KabuK first-party products such as HafH.">
+          <div class="kx-scroll">
+            <svg class="kx-svg" aria-hidden="true" viewBox="0 0 1240 720" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="kx-hub" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2E6BFF"/>
+      <stop offset="1" stop-color="#00C2D4"/>
+    </linearGradient>
+    <linearGradient id="kx-linkIn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6C4DF6"/>
+      <stop offset="1" stop-color="#2E6BFF"/>
+    </linearGradient>
+    <linearGradient id="kx-linkOut" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2E6BFF"/>
+      <stop offset="1" stop-color="#00C2D4"/>
+    </linearGradient>
+    <linearGradient id="kx-linkTwoWay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6C4DF6"/>
+      <stop offset="1" stop-color="#00C2D4"/>
+    </linearGradient>
+    <filter id="kx-cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#173A63" flood-opacity="0.10"/>
+    </filter>
+    <filter id="kx-dotGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="kx-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.2" cy="1.2" r="1.2" fill="#2E6BFF" opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1240" height="720" fill="url(#kx-grid)"/>
+
+  <!-- column labels -->
+  <text x="185" y="96" text-anchor="middle" font-size="11.5" font-weight="700" letter-spacing="2.5" fill="#6C4DF6">SUPPLY</text>
+  <text x="185" y="114" text-anchor="middle" font-size="12" fill="#64788D">Hotel inventory sources</text>
+  <text x="1055" y="62" text-anchor="middle" font-size="11.5" font-weight="700" letter-spacing="2.5" fill="#00A9BF">PARTNERS</text>
+  <text x="1055" y="80" text-anchor="middle" font-size="12" fill="#64788D">Who we serve</text>
+
+  <!-- ================= LINKS (under nodes) ================= -->
+  <g fill="none" stroke-linecap="round">
+    <!-- inbound -->
+    <path id="kx-in1" d="M310 200 C 420 200, 430 300, 508 322"/>
+    <path id="kx-in2" d="M310 360 C 400 360, 420 360, 508 360"/>
+    <path id="kx-in3" d="M310 520 C 420 520, 430 420, 508 398"/>
+    <!-- outbound -->
+    <path id="kx-out1" d="M732 308 C 830 270, 830 140, 928 128"/>
+    <path id="kx-out2" d="M732 330 C 830 310, 830 222, 928 220"/>
+    <path id="kx-out3" d="M732 355 C 830 350, 830 312, 928 312"/>
+    <path id="kx-out4" d="M732 380 C 830 382, 830 404, 928 404"/>
+    <path id="kx-out5" d="M732 402 C 830 415, 830 496, 928 496"/>
+    <path id="kx-out6" d="M732 424 C 830 460, 830 588, 928 588"/>
+    <!-- first-party -->
+    <path id="kx-own1" d="M620 468 L620 598"/>
+  </g>
+
+  <!-- base lines -->
+  <g fill="none" stroke="#D8E4EE" stroke-width="1.6">
+    <use href="#kx-in1"/><use href="#kx-in2"/><use href="#kx-in3"/>
+    <use href="#kx-out1"/><use href="#kx-out2"/><use href="#kx-out3"/>
+    <use href="#kx-out4"/><use href="#kx-out5"/><use href="#kx-out6"/>
+    <use href="#kx-own1"/>
+  </g>
+
+  <!-- animated flow dashes -->
+  <g fill="none" stroke-width="2" stroke-linecap="round">
+    <use href="#kx-in1" class="kx-flow" stroke="url(#kx-linkIn)" opacity="0.55"/>
+    <use href="#kx-in2" class="kx-flow" stroke="url(#kx-linkIn)" opacity="0.55"/>
+    <use href="#kx-in3" class="kx-flow" stroke="url(#kx-linkIn)" opacity="0.55"/>
+    <use href="#kx-out1" class="kx-flow" stroke="url(#kx-linkOut)" opacity="0.55"/>
+    <use href="#kx-out2" class="kx-flow" stroke="url(#kx-linkOut)" opacity="0.55"/>
+    <use href="#kx-out3" class="kx-flow" stroke="url(#kx-linkOut)" opacity="0.55"/>
+    <use href="#kx-out4" class="kx-flow" stroke="url(#kx-linkTwoWay)" opacity="0.75"/>
+    <use href="#kx-out5" class="kx-flow" stroke="url(#kx-linkOut)" opacity="0.55"/>
+    <use href="#kx-out6" class="kx-flow" stroke="url(#kx-linkOut)" opacity="0.55"/>
+    <use href="#kx-own1" class="kx-flow" stroke="url(#kx-hub)" opacity="0.6"/>
+  </g>
+
+  <!-- traveling pulses -->
+  <g id="kx-pulses" filter="url(#kx-dotGlow)">
+    <circle r="4.2" fill="#6C4DF6"><animateMotion dur="2.8s" begin="0s" repeatCount="indefinite"><mpath href="#kx-in1"/></animateMotion></circle>
+    <circle r="4.2" fill="#2E6BFF"><animateMotion dur="2.8s" begin="0.9s" repeatCount="indefinite"><mpath href="#kx-in2"/></animateMotion></circle>
+    <circle r="4.2" fill="#6C4DF6"><animateMotion dur="2.8s" begin="1.8s" repeatCount="indefinite"><mpath href="#kx-in3"/></animateMotion></circle>
+
+    <circle r="4.2" fill="#00C2D4"><animateMotion dur="3s" begin="0.2s" repeatCount="indefinite"><mpath href="#kx-out1"/></animateMotion></circle>
+    <circle r="4.2" fill="#2E6BFF"><animateMotion dur="3s" begin="0.7s" repeatCount="indefinite"><mpath href="#kx-out2"/></animateMotion></circle>
+    <circle r="4.2" fill="#00C2D4"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite"><mpath href="#kx-out3"/></animateMotion></circle>
+    <!-- PMS / CM: two-way traffic -->
+    <circle r="4.2" fill="#00C2D4"><animateMotion dur="3s" begin="1.7s" repeatCount="indefinite"><mpath href="#kx-out4"/></animateMotion></circle>
+    <circle r="4.2" fill="#6C4DF6"><animateMotion dur="3s" begin="0.4s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#kx-out4"/></animateMotion></circle>
+
+    <circle r="4.2" fill="#00C2D4"><animateMotion dur="3s" begin="2.2s" repeatCount="indefinite"><mpath href="#kx-out5"/></animateMotion></circle>
+    <circle r="4.2" fill="#2E6BFF"><animateMotion dur="3s" begin="2.7s" repeatCount="indefinite"><mpath href="#kx-out6"/></animateMotion></circle>
+
+    <circle r="4.2" fill="#2E6BFF"><animateMotion dur="2.4s" begin="0.5s" repeatCount="indefinite"><mpath href="#kx-own1"/></animateMotion></circle>
+  </g>
+
+  <!-- ================= HUB ================= -->
+  <g>
+    <circle class="kx-ring" cx="620" cy="363" r="150" fill="none" stroke="#2E6BFF" stroke-width="1.4"/>
+    <circle class="kx-ring kx-r2" cx="620" cy="363" r="150" fill="none" stroke="#00C2D4" stroke-width="1.4"/>
+    <circle class="kx-ring kx-r3" cx="620" cy="363" r="150" fill="none" stroke="#6C4DF6" stroke-width="1.4"/>
+    <circle class="kx-hubGlow" cx="620" cy="363" r="118" fill="url(#kx-hub)" opacity="0.14"/>
+    <g class="kx-node" style="animation-delay:.15s">
+      <circle class="kx-card" cx="620" cy="363" r="102" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+      <circle cx="620" cy="363" r="102" fill="none" stroke="url(#kx-hub)" stroke-width="2"/>
+      <!-- exchange arrows icon -->
+      <g stroke="url(#kx-hub)" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M596 330 H642 M642 330 l-8 -8 M642 330 l-8 8"/>
+        <path d="M644 348 H598 M598 348 l8 -8 M598 348 l8 8"/>
+      </g>
+      <text x="620" y="384" text-anchor="middle" font-size="21" font-weight="700" fill="#0E1F33">KabuK Exchange</text>
+      <text x="620" y="406" text-anchor="middle" font-size="11.5" fill="#64788D">Hotel Exchange Platform</text>
+      <text x="620" y="422" text-anchor="middle" font-size="11.5" fill="#64788D">Pricing · Booking · Billing</text>
+    </g>
+  </g>
+
+  <!-- ================= SUPPLY NODES ================= -->
+  <!-- Direct Hotel Contracts -->
+  <g class="kx-node" style="animation-delay:.3s">
+    <rect class="kx-card" x="60" y="160" width="250" height="80" rx="16" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="60" y="160" width="250" height="80" rx="16" fill="none" stroke="#E4EDF5"/>
+    <rect x="78" y="178" width="44" height="44" rx="12" fill="#F0EDFE"/>
+    <g stroke="#6C4DF6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M89 213 v-16 a3 3 0 0 1 3 -3 h16 a3 3 0 0 1 3 3 v16"/>
+      <path d="M86 213 h28"/>
+      <path d="M95 200 h2 M103 200 h2 M95 206 h2 M103 206 h2"/>
+    </g>
+    <text x="136" y="197" font-size="14" font-weight="650" fill="#0E1F33">Direct Hotel Contracts</text>
+    <text x="136" y="216" font-size="11.5" fill="#64788D">Direct supply</text>
+  </g>
+
+  <!-- Wholesalers & Bedbanks -->
+  <g class="kx-node" style="animation-delay:.42s">
+    <rect class="kx-card" x="60" y="320" width="250" height="80" rx="16" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="60" y="320" width="250" height="80" rx="16" fill="none" stroke="#E4EDF5"/>
+    <rect x="78" y="338" width="44" height="44" rx="12" fill="#EAF1FF"/>
+    <g stroke="#2E6BFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="88" y="352" width="10" height="10" rx="1.5"/>
+      <rect x="102" y="352" width="10" height="10" rx="1.5"/>
+      <rect x="95" y="366" width="10" height="8" rx="1.5"/>
+    </g>
+    <text x="136" y="357" font-size="14" font-weight="650" fill="#0E1F33">Wholesalers &amp; Bedbanks</text>
+    <text x="136" y="376" font-size="11.5" fill="#64788D">Wholesale supply</text>
+  </g>
+
+  <!-- Suppliers -->
+  <g class="kx-node" style="animation-delay:.54s">
+    <rect class="kx-card" x="60" y="480" width="250" height="80" rx="16" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="60" y="480" width="250" height="80" rx="16" fill="none" stroke="#E4EDF5"/>
+    <rect x="78" y="498" width="44" height="44" rx="12" fill="#E6F8FA"/>
+    <g stroke="#00A9BF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="100" cy="520" r="11"/>
+      <path d="M89 520 h22 M100 509 c-4 3.5 -4 18.5 0 22 M100 509 c4 3.5 4 18.5 0 22"/>
+    </g>
+    <text x="136" y="517" font-size="14" font-weight="650" fill="#0E1F33">Suppliers</text>
+    <text x="136" y="536" font-size="11.5" fill="#64788D">Third-party rates &amp; rooms</text>
+  </g>
+
+  <!-- ================= PARTNER NODES ================= -->
+  <!-- OTAs & Marketplaces -->
+  <g class="kx-node" style="animation-delay:.55s">
+    <rect class="kx-card" x="928" y="90" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="90" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="110" width="36" height="36" rx="10" fill="#E6F8FA"/>
+    <g stroke="#00A9BF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M952 124 h20 M952 130 h20 M955 118 l3 -4 h8 l3 4"/>
+      <path d="M956 124 v10 M968 124 v10"/>
+    </g>
+    <text x="994" y="126" font-size="14" font-weight="650" fill="#0E1F33">OTAs &amp; Marketplaces</text>
+    <text x="994" y="145" font-size="11.5" fill="#64788D">API demand</text>
+  </g>
+
+  <!-- Travel Agents -->
+  <g class="kx-node" style="animation-delay:.65s">
+    <rect class="kx-card" x="928" y="182" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="182" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="202" width="36" height="36" rx="10" fill="#EAF1FF"/>
+    <g stroke="#2E6BFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="962" cy="214" r="4.5"/>
+      <path d="M953 231 c0 -6 4 -9 9 -9 s9 3 9 9"/>
+    </g>
+    <text x="994" y="218" font-size="14" font-weight="650" fill="#0E1F33">Travel Agents</text>
+    <text x="994" y="237" font-size="11.5" fill="#64788D">Assisted sales</text>
+  </g>
+
+  <!-- Wholesalers & Suppliers -->
+  <g class="kx-node" style="animation-delay:.75s">
+    <rect class="kx-card" x="928" y="274" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="274" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="294" width="36" height="36" rx="10" fill="#F0EDFE"/>
+    <g stroke="#6C4DF6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M953 322 v-12 l9 -5 9 5 v12 z M962 305 v8 M953 310 l9 5 9 -5"/>
+    </g>
+    <text x="994" y="310" font-size="14" font-weight="650" fill="#0E1F33">Wholesalers &amp; Suppliers</text>
+    <text x="994" y="329" font-size="11.5" fill="#64788D">Resale &amp; re-distribution</text>
+  </g>
+
+  <!-- PMS & Channel Managers -->
+  <g class="kx-node" style="animation-delay:.85s">
+    <rect class="kx-card" x="928" y="366" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="366" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="386" width="36" height="36" rx="10" fill="#EAF1FF"/>
+    <g stroke="#2E6BFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="951" y="395" width="22" height="14" rx="2"/>
+      <path d="M958 414 h8 M962 409 v5"/>
+    </g>
+    <text x="994" y="402" font-size="14" font-weight="650" fill="#0E1F33">PMS &amp; Channel Managers</text>
+    <text x="994" y="421" font-size="11.5" fill="#64788D">ARI + booking · two-way</text>
+  </g>
+
+  <!-- Technology Partners -->
+  <g class="kx-node" style="animation-delay:.95s">
+    <rect class="kx-card" x="928" y="458" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="458" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="478" width="36" height="36" rx="10" fill="#E6F8FA"/>
+    <g stroke="#00A9BF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M955 490 l-5 6 5 6 M969 490 l5 6 -5 6 M964 488 l-4 16"/>
+    </g>
+    <text x="994" y="494" font-size="14" font-weight="650" fill="#0E1F33">Technology Partners</text>
+    <text x="994" y="513" font-size="11.5" fill="#64788D">Platform integrations</text>
+  </g>
+
+  <!-- Destination Partners -->
+  <g class="kx-node" style="animation-delay:1.05s">
+    <rect class="kx-card" x="928" y="550" width="256" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="928" y="550" width="256" height="76" rx="14" fill="none" stroke="#E4EDF5"/>
+    <rect x="944" y="570" width="36" height="36" rx="10" fill="#F0EDFE"/>
+    <g stroke="#6C4DF6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M962 601 c-6 -7 -9 -11 -9 -15 a9 9 0 0 1 18 0 c0 4 -3 8 -9 15 z"/>
+      <circle cx="962" cy="586" r="3"/>
+    </g>
+    <text x="994" y="586" font-size="14" font-weight="650" fill="#0E1F33">Destination Partners</text>
+    <text x="994" y="605" font-size="11.5" fill="#64788D">Local inventory &amp; demand</text>
+  </g>
+
+  <!-- ================= KABUK PRODUCTS (first-party) ================= -->
+  <g class="kx-node" style="animation-delay:1.15s">
+    <rect class="kx-card" x="495" y="598" width="250" height="76" rx="14" fill="#FFFFFF" filter="url(#kx-cardShadow)"/>
+    <rect x="495" y="598" width="250" height="76" rx="14" fill="none" stroke="url(#kx-hub)" stroke-width="1.4"/>
+    <rect x="511" y="618" width="36" height="36" rx="10" fill="#EAF1FF"/>
+    <g stroke="#2E6BFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M519 634 l10 -8 10 8 M521 632 v10 h16 v-10"/>
+      <path d="M526 642 v-5 h6 v5"/>
+    </g>
+    <text x="561" y="634" font-size="14" font-weight="650" fill="#0E1F33">KabuK Products</text>
+    <text x="561" y="653" font-size="11.5" fill="#64788D">HafH + more · first-party demand</text>
+  </g>
+
+  <!-- flow direction labels -->
+  <text x="409" y="104" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="2" fill="#6C4DF6" opacity="0.75">INVENTORY IN →</text>
+  <text x="830" y="104" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="2" fill="#00A9BF" opacity="0.85">SOLUTIONS OUT →</text>
+</svg>
           </div>
         </div>
+        <ul class="check-list kx-legend reveal" data-delay="1">
+          <li data-i18n="home.net.li1">Hotels and hotel groups publish supply</li>
+          <li data-i18n="home.net.li2">OTAs, agencies, and wholesalers consume demand</li>
+          <li><span data-i18n="home.net.li3">PMS and channel managers connect systems</span> <span class="badge badge-planned" data-i18n="home.badge.planned">Planned</span></li>
+          <li data-i18n="home.net.li4">KabuK internal services extend reach</li>
+        </ul>
       </div>
     </section>
 
@@ -373,7 +588,7 @@
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow" data-i18n="ecosystem.title">Ecosystem</span>
-          <h2 data-i18n="ecosystem.title">The KBKx ecosystem</h2>
+          <h2 data-i18n="ecosystem.title">The KabuK Exchange ecosystem</h2>
           <p class="lead" data-i18n="ecosystem.subtitle">A directory of the participant types the platform is designed to serve. Sample data for internal review.</p>
         </div>
         <div id="eco-filter" class="filter-bar" role="group" aria-label="Filter ecosystem by category"></div>
@@ -401,10 +616,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="index.html" aria-label="KBKx home"><span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span></a>
-          <p class="footer-about" data-i18n="footer.about">KBKx is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
+          <a class="brand" href="index.html" aria-label="KabuK Exchange home"><span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span></a>
+          <p class="footer-about" data-i18n="footer.about">KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
         </div>
-        <nav class="footer-col" aria-label="KBKx links"><h4 data-i18n="footer.site">KBKx</h4><ul data-footer="site"></ul></nav>
+        <nav class="footer-col" aria-label="KabuK Exchange links"><h4 data-i18n="footer.site">KabuK Exchange</h4><ul data-footer="site"></ul></nav>
         <nav class="footer-col" aria-label="KabuK Style Inc. links"><h4 data-i18n="footer.company">KabuK Style Inc.</h4><ul data-footer="company"></ul></nav>
       </div>
       <div class="footer-bottom">

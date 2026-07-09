@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KBKx — site behavior (vanilla JS, no build step)
+   KabuK Exchange — site behavior (vanilla JS, no build step)
    --------------------------------------------------------------------------
    Responsibilities:
      1. Load site-config.json  -> Partner Login URL, footer links, form routing
@@ -40,7 +40,7 @@
     return fetchJSON("site-config.json")
       .then(function (cfg) { siteConfig = cfg; return cfg; })
       .catch(function (err) {
-        console.warn("[KBKx] Using fallback config:", err.message);
+        console.warn("[KabuK Exchange] Using fallback config:", err.message);
         siteConfig = {
           adminConsoleUrl: "#",
           leadRouting: {},
@@ -61,10 +61,10 @@
       a.setAttribute("rel", "noopener");
     });
 
-    // Footer: KBKx site links
+    // Footer: KabuK Exchange site links (always text)
     renderFooterLinks("[data-footer='site']", cfg.footerLinks);
-    // Footer: KabuK Style Inc. company links
-    renderFooterLinks("[data-footer='company']", cfg.companyLinks);
+    // Footer: KabuK Style Inc. company links — text or icon variant (A/B)
+    renderFooterLinks("[data-footer='company']", cfg.companyLinks, cfg.footerCompanyStyle === "icons");
   }
 
   // Surface obvious config mistakes in the console for whoever is editing
@@ -86,23 +86,31 @@
     if (cfg.formMode === "api" && !cfg.apiEndpoint) problems.push('formMode is "api" but apiEndpoint is missing');
 
     if (problems.length) {
-      console.warn("[KBKx] site-config.json review needed:\n - " + problems.join("\n - "));
+      console.warn("[KabuK Exchange] site-config.json review needed:\n - " + problems.join("\n - "));
     }
   }
 
-  function renderFooterLinks(sel, links) {
+  function renderFooterLinks(sel, links, asIcons) {
     var ul = $(sel);
     if (!ul || !Array.isArray(links)) return;
     ul.innerHTML = "";
+    ul.classList.toggle("footer-icons", !!asIcons);
     links.forEach(function (link) {
       var li = document.createElement("li");
       var a = document.createElement("a");
       a.href = link.href || "#";
-      a.textContent = link.label || "";
-      // External links open in a new tab.
-      if (/^https?:/i.test(link.href || "")) {
-        a.target = "_blank";
-        a.rel = "noopener";
+      var external = /^https?:/i.test(link.href || "");
+      if (external) { a.target = "_blank"; a.rel = "noopener"; }
+
+      if (asIcons) {
+        // Icon variant (A/B): show the service icon; label lives in aria-label/title.
+        a.className = "footer-icon";
+        a.setAttribute("aria-label", link.label || "");
+        a.setAttribute("title", link.label || "");
+        var paths = ICON_PATHS[link.icon] || ICON_PATHS.link;
+        a.innerHTML = "<svg " + ICON_ATTRS + ">" + paths + "</svg>";
+      } else {
+        a.textContent = link.label || "";
       }
       li.appendChild(a);
       ul.appendChild(li);
@@ -196,8 +204,8 @@
       var open = header.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    // Close the menu after tapping a link (mobile).
-    $all(".main-nav a").forEach(function (a) {
+    // Close the menu after tapping any link inside it (nav or CTA) on mobile.
+    $all(".header-menu a").forEach(function (a) {
       a.addEventListener("click", function () {
         header.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
@@ -286,7 +294,7 @@
       render("all");
     }).catch(function (err) {
       grid.innerHTML = '<p class="lead">Ecosystem data could not be loaded.</p>';
-      console.warn("[KBKx]", err.message);
+      console.warn("[KabuK Exchange]", err.message);
     });
   }
 
@@ -373,7 +381,7 @@
   }
 
   function submitViaMailto(form, target, fields) {
-    var subject = form.getAttribute("data-subject") || "KBKx enquiry";
+    var subject = form.getAttribute("data-subject") || "KabuK Exchange enquiry";
     var body = fields.map(function (f) { return f.label + ": " + f.value; }).join("\n");
     var href = "mailto:" + encodeURIComponent(target) +
       "?subject=" + encodeURIComponent(subject) +
@@ -435,7 +443,11 @@
     layers: '<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
     antenna: '<path d="M12 12v9M8 21h8"/><path d="M5 8a7 7 0 0 1 14 0M8 10a4 4 0 0 1 8 0"/><circle cx="12" cy="12" r="1.5"/>',
     puzzle: '<path d="M9 5a1.6 1.6 0 0 1 3.2 0c0 .9.6 1.1 1.1 1.1H15a1 1 0 0 1 1 1v1.7c0 .5.2 1.1 1.1 1.1a1.6 1.6 0 0 1 0 3.2c-.9 0-1.1.6-1.1 1.1V17a1 1 0 0 1-1 1h-1.7c-.5 0-1.1.2-1.1 1.1a1.6 1.6 0 0 1-3.2 0c0-.9-.6-1.1-1.1-1.1H5a1 1 0 0 1-1-1v-1.7c0-.5-.2-1.1-1.1-1.1a1.6 1.6 0 0 1 0-3.2c.9 0 1.1-.6 1.1-1.1V7a1 1 0 0 1 1-1h1.9c.5 0 1.1-.2 1.1-1z"/>',
-    shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>'
+    shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+    // footer service icons
+    bed: '<path d="M3 8v11M3 13h16a2 2 0 0 1 2 2v4M3 19h18"/><path d="M7 13v-2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/>',
+    newspaper: '<rect x="3" y="5" width="15" height="15" rx="1.5"/><path d="M18 8h1.5a1.5 1.5 0 0 1 1.5 1.5V18a2 2 0 0 1-2 2H5"/><path d="M6 9h6M6 13h9M6 17h7"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/>'
   };
 
   function initIcons() {
@@ -457,7 +469,7 @@
     if (window.__kbkxAnalyticsLoaded) return;
     window.__kbkxAnalyticsLoaded = true;
     // e.g. inject a <script> tag for your analytics provider here.
-    console.info("[KBKx] Analytics consent granted — load analytics here.");
+    console.info("[KabuK Exchange] Analytics consent granted — load analytics here.");
   }
 
   function initCookieBanner() {
@@ -490,10 +502,94 @@
   }
 
   /* ---------------------------------------------------------------------
+     9. Color theme switcher
+     --------------------------------------------------------------------- */
+  var THEME_KEY = "kbkx-theme";
+  // Presets. "ocean" is the CSS default (no data-theme attribute). Others map to
+  // :root[data-theme="…"] blocks in styles.css. `dot` is the swatch color.
+  var THEMES = [
+    { id: "ocean",  label: "Ocean (blue)",       dot: "#2e6cf6" },
+    { id: "sky",    label: "Sky (lighter blue)", dot: "#3b82f6" },
+    { id: "sunset", label: "Sunset (red)",       dot: "#e11d48" },
+    { id: "amber",  label: "Amber (orange)",     dot: "#ea580c" },
+    { id: "forest", label: "Forest (green)",     dot: "#059669" }
+  ];
+
+  function getTheme() {
+    var t = null;
+    try { t = localStorage.getItem(THEME_KEY); } catch (e) {}
+    return t || "ocean";
+  }
+  function applyTheme(id) {
+    if (id && id !== "ocean") document.documentElement.setAttribute("data-theme", id);
+    else document.documentElement.removeAttribute("data-theme");
+  }
+
+  function initThemeSwitcher() {
+    var actions = $(".header-actions");
+    if (!actions) return;
+    var current = getTheme();
+    applyTheme(current);
+
+    var wrap = document.createElement("div");
+    wrap.className = "theme-switch";
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "theme-toggle";
+    btn.setAttribute("aria-haspopup", "true");
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Change color theme");
+    btn.innerHTML = "<svg " + ICON_ATTRS + ">" +
+      '<path d="M12 3a9 9 0 1 0 0 18 1.6 1.6 0 0 0 1.2-2.7 1.6 1.6 0 0 1 1.2-2.7H16a5 5 0 0 0 5-5c0-4.4-4-7.6-9-7.6z"/>' +
+      '<circle cx="8.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="15.5" cy="10.5" r="1"/></svg>';
+
+    var menu = document.createElement("div");
+    menu.className = "theme-menu";
+    menu.setAttribute("role", "group");
+    menu.setAttribute("aria-label", "Color theme");
+    menu.innerHTML = '<div class="theme-menu-title">Theme</div><div class="theme-swatches"></div>';
+    var sw = menu.querySelector(".theme-swatches");
+
+    THEMES.forEach(function (t) {
+      var s = document.createElement("button");
+      s.type = "button";
+      s.className = "swatch";
+      s.style.background = t.dot;
+      s.setAttribute("aria-label", t.label);
+      s.setAttribute("title", t.label);
+      s.setAttribute("aria-pressed", t.id === current ? "true" : "false");
+      s.addEventListener("click", function () {
+        current = t.id;
+        applyTheme(t.id);
+        try { localStorage.setItem(THEME_KEY, t.id); } catch (e) {}
+        $all(".swatch", sw).forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        s.setAttribute("aria-pressed", "true");
+        closeMenu();
+      });
+      sw.appendChild(s);
+    });
+
+    function openMenu() { wrap.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
+    function closeMenu() { wrap.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      wrap.classList.contains("open") ? closeMenu() : openMenu();
+    });
+    document.addEventListener("click", function (e) { if (!wrap.contains(e.target)) closeMenu(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+
+    wrap.appendChild(btn);
+    wrap.appendChild(menu);
+    actions.insertBefore(wrap, actions.firstChild);
+  }
+
+  /* ---------------------------------------------------------------------
      Boot
      --------------------------------------------------------------------- */
   function boot() {
     buildLangSelector();
+    initThemeSwitcher();     // apply saved theme + build the palette control
     initCookieBanner();      // build banner first so setLang() can translate it
     setLang(getLang());
     initNav();
