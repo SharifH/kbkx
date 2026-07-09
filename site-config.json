@@ -1,0 +1,34 @@
+{
+  "_comment": "KBKx site configuration. Non-engineers can safely edit the values below. Placeholder values are marked with PLACEHOLDER — replace before going live.",
+
+  "adminConsoleUrl": "https://console.kbkx.example.com/login",
+
+  "leadRouting": {
+    "partnerEmail": "partnerships@kbkx.example.com",
+    "hotelEmail": "supply@kbkx.example.com",
+    "generalEmail": "hello@kbkx.example.com"
+  },
+
+  "formMode": "mailto",
+
+  "apiEndpoint": "https://api.kbkx.example.com/v1/leads",
+
+  "footerLinks": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "For Hotels", "href": "hotels.html" },
+    { "label": "For Partners", "href": "partners.html" },
+    { "label": "About Us", "href": "about.html" },
+    { "label": "Link Your Property", "href": "link-your-property.html" },
+    { "label": "Become a Partner", "href": "become-a-partner.html" },
+    { "label": "Privacy Policy", "href": "privacy.html" },
+    { "label": "Terms of Use", "href": "terms.html" }
+  ],
+
+  "companyLinks": [
+    { "label": "KabuK Style Inc.", "href": "https://www.kabukstyle.com", "note": "PLACEHOLDER URL" },
+    { "label": "HafH", "href": "https://www.hafh.com", "note": "PLACEHOLDER URL" },
+    { "label": "KabuK Style News", "href": "https://www.kabukstyle.com/news", "note": "PLACEHOLDER URL" },
+    { "label": "Contact", "href": "mailto:hello@kbkx.example.com", "note": "PLACEHOLDER EMAIL" },
+    { "label": "Careers", "href": "https://www.kabukstyle.com/careers", "note": "PLACEHOLDER URL" }
+  ]
+}

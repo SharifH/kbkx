@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Become a Partner — KBKx</title>
+  <meta name="description" content="Become a KBKx partner — for OTAs, travel agencies, wholesalers, suppliers, PMS/channel managers, and technology partners." />
+  <link rel="canonical" href="https://www.kbkx.example.com/become-a-partner.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- Open Graph / social share (PLACEHOLDER domain + image) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KBKx" />
+  <meta property="og:title" content="Become a Partner — KBKx" />
+  <meta property="og:description" content="Become a KBKx partner — for OTAs, travel agencies, wholesalers, suppliers, PMS/channel managers, and technology partners." />
+  <meta property="og:url" content="https://www.kbkx.example.com/become-a-partner.html" />
+  <meta property="og:image" content="https://www.kbkx.example.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Become a Partner — KBKx" />
+  <meta name="twitter:description" content="Become a KBKx partner — for OTAs, travel agencies, wholesalers, suppliers, PMS/channel managers, and technology partners." />
+  <meta name="twitter:image" content="https://www.kbkx.example.com/og-image.png" />
+  <meta name="theme-color" content="#0a1330" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="KBKx home">
+        <span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
+          <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <select id="lang-select" class="lang-select" aria-label="Select language"></select>
+        <div class="header-cta-desktop">
+          <a class="btn btn-ghost" data-role="partner-login" href="#" rel="noopener" data-i18n="cta.login">Partner Login</a>
+          <a class="btn btn-secondary" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
+          <a class="btn btn-primary" href="link-your-property.html" data-i18n="cta.linkProperty">Link Your Property</a>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section-dark" style="padding-bottom:40px">
+      <div class="container">
+        <div class="section-head reveal" style="max-width:760px">
+          <span class="eyebrow" data-i18n="form.becomeTitle">Become a Partner</span>
+          <h1 data-i18n="form.becomeTitle">Become a Partner</h1>
+          <p class="lead" data-i18n="form.becomeSubtitle">For OTAs, travel agencies, wholesalers, suppliers, and technology partners.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container">
+        <div class="form-layout">
+          <!-- Side info -->
+          <aside class="info-panel">
+            <div class="card reveal">
+              <h3>What happens next</h3>
+              <ul class="check-list" style="margin-top:10px">
+                <li>We review your details</li>
+                <li>We align on a partnership model</li>
+                <li>We begin technical integration</li>
+              </ul>
+            </div>
+            <div class="card reveal" data-delay="1">
+              <h3>Prefer to explore first?</h3>
+              <p>See the <a href="partners.html">For Partners</a> page for capabilities and the integration journey.</p>
+            </div>
+          </aside>
+
+          <!-- FORM -->
+          <form class="lead-form reveal" data-lead-form data-route="partnerEmail"
+                data-subject="KBKx — Become a Partner enquiry" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="p-company"><span data-i18n="form.companyName">Company name</span> <span class="req">*</span></label>
+                <input id="p-company" name="Company name" type="text" required autocomplete="organization" />
+              </div>
+              <div class="field">
+                <label for="p-contact"><span data-i18n="form.contactName">Contact name</span> <span class="req">*</span></label>
+                <input id="p-contact" name="Contact name" type="text" required autocomplete="name" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="p-email"><span data-i18n="form.email">Email</span> <span class="req">*</span></label>
+                <input id="p-email" name="Email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="p-phone"><span data-i18n="form.phone">Phone</span></label>
+                <input id="p-phone" name="Phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="p-type"><span data-i18n="form.companyType">Company type</span> <span class="req">*</span></label>
+                <select id="p-type" name="Company type" required>
+                  <option value="" data-i18n="form.select">Please select</option>
+                  <option>OTA / Marketplace</option>
+                  <option>Travel agency / DMC</option>
+                  <option>Wholesaler / Bedbank</option>
+                  <option>Supplier</option>
+                  <option>PMS company</option>
+                  <option>Channel manager</option>
+                  <option>Technology partner</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="p-region"><span data-i18n="form.region">Region</span></label>
+                <select id="p-region" name="Region">
+                  <option value="" data-i18n="form.select">Please select</option>
+                  <option>Japan</option>
+                  <option>APAC (ex-Japan)</option>
+                  <option>EMEA</option>
+                  <option>Americas</option>
+                  <option>Global</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="p-volume"><span data-i18n="form.volume">Estimated monthly booking volume</span></label>
+              <select id="p-volume" name="Estimated monthly booking volume">
+                <option value="" data-i18n="form.select">Please select</option>
+                <option>Fewer than 100</option>
+                <option>100–1,000</option>
+                <option>1,000–10,000</option>
+                <option>More than 10,000</option>
+              </select>
+            </div>
+
+            <div class="field" data-group-label="Integration interest">
+              <label><span data-i18n="form.integration">Integration interest</span></label>
+              <div class="checkbox-grid">
+                <label><input type="checkbox" name="Integration interest" value="Supply access" /> Supply access</label>
+                <label><input type="checkbox" name="Integration interest" value="Booking APIs" /> Booking APIs</label>
+                <label><input type="checkbox" name="Integration interest" value="Supply redistribution" /> Supply redistribution</label>
+                <label><input type="checkbox" name="Integration interest" value="Billing / payments" /> Billing / payments</label>
+                <label><input type="checkbox" name="Integration interest" value="PMS / channel manager" /> PMS / channel manager</label>
+                <label><input type="checkbox" name="Integration interest" value="Other" /> Other</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="p-message"><span data-i18n="form.message">Message</span></label>
+              <textarea id="p-message" name="Message" placeholder=""></textarea>
+            </div>
+
+            <!-- Honeypot: hidden from people; if a bot fills it the submit is dropped. -->
+            <div class="hp-field" aria-hidden="true">
+              <label>Leave this field empty
+                <input type="text" name="_hp" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
+            <div class="field-consent">
+              <input id="p-consent" name="Consent" type="checkbox" value="Agreed" required />
+              <label for="p-consent">
+                <span data-i18n="form.consent">I agree to be contacted about this enquiry, in line with the</span>
+                <a href="privacy.html" data-i18n="form.privacy">Privacy Policy</a>. <span class="req">*</span>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" data-i18n="form.submit">Send</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-note">
+              This form opens your email client by default (mailto). The destination address and delivery mode are set in <code>site-config.json</code> and can be switched to an API endpoint without editing JavaScript.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="KBKx home"><span class="brand-mark">K</span><span>KBK<span class="brand-x">x</span></span></a>
+          <p class="footer-about" data-i18n="footer.about">KBKx is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
+        </div>
+        <nav class="footer-col" aria-label="KBKx links"><h4 data-i18n="footer.site">KBKx</h4><ul data-footer="site"></ul></nav>
+        <nav class="footer-col" aria-label="KabuK Style Inc. links"><h4 data-i18n="footer.company">KabuK Style Inc.</h4><ul data-footer="company"></ul></nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 KabuK Style Inc. — <span data-i18n="footer.rights">All rights reserved.</span></span>
+        <span class="pill-note">Internal review build</span>
+      </div>
+      <p class="footer-disclaimer" data-i18n="footer.disclaimer">This site is for internal review. URLs, emails, and partner data marked PLACEHOLDER are examples only.</p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
