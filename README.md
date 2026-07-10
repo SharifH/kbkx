@@ -60,9 +60,17 @@ header/footer. Add it to `sitemap.xml` and, if it should appear in the footer, t
 
 ## Run it locally
 
-The pages load `site-config.json` and `partners.json` with `fetch()`. Browsers block `fetch()` from `file://` for security, so **open the site through a local web server**, not by double-clicking the HTML file.
+> **⚠️ Do not open the `.html` files by double-clicking them (`file://`).** The pages
+> reference `/styles.css`, `/script.js`, and fetch the JSON config/translations using
+> **root-absolute paths**, and use clean folder URLs (`/hotels/`, `/platform/`). These
+> only resolve when the site is served over HTTP with **this folder (`kbkx-site`) as the
+> web root**. Opened as a file, the page will appear **unstyled** and data won't load.
 
-Pick any one of these (run from inside this folder):
+**Easiest (macOS):** double-click **`serve.command`** in this folder. It serves from the
+correct root and opens your browser at <http://localhost:8080/>.
+
+**Or run one of these from *inside* this `kbkx-site` folder** (the current directory
+must be this folder, so `/styles.css` maps to `kbkx-site/styles.css`):
 
 ```bash
 # Python 3 (pre-installed on macOS/Linux)
@@ -75,7 +83,11 @@ npx serve .
 php -S localhost:8080
 ```
 
-Then open <http://localhost:8080>.
+Then open <http://localhost:8080/>.
+
+If the page loads but is **unstyled**, the server's root is wrong — you're serving a
+parent directory. `cd` into `kbkx-site` first (so `http://localhost:8080/styles.css`
+returns the CSS, not a 404), or just use `serve.command`.
 
 > If you open a page directly as `file://`, the layout still renders, but the footer link lists, the Partner Login URL, and the ecosystem directory will be empty because the JSON files can't be fetched.
 
