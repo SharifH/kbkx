@@ -20,7 +20,7 @@ Built with **plain HTML, CSS, and vanilla JavaScript** plus a couple of **JSON c
 | `link-your-property.html` | Lead form for hotels and hotel groups |
 | `styles.css` | All styling and animations |
 | `script.js` | Behavior: config loading, i18n, nav, animations, ecosystem filter, forms |
-| `translations.js` | UI text for all supported languages |
+| `i18n/` | Copy for each language as separate JSON files + `languages.json` manifest (see `i18n/README.md`) |
 | `partners.json` | Editable ecosystem directory shown on the homepage |
 | `site-config.json` | Editable settings: login URL, form emails, footer/company links |
 | `privacy.html` / `terms.html` | Placeholder legal pages (Privacy linked from the forms' consent checkbox) |
@@ -201,25 +201,49 @@ surrounding heading, subtitle, and legend are localized.
 
 Supported languages: **English, Japanese, Korean, Traditional Chinese (Taiwan), Arabic**.
 
+All copy lives in **separate JSON files, one per language, in the [`i18n/`](i18n/) folder** —
+so content teams can edit each language independently without touching code. See
+[`i18n/README.md`](i18n/README.md) for the full editor guide.
+
+```
+i18n/
+  languages.json    ← the list of languages (edit to add/remove one)
+  en.json           ← English (source of truth)
+  ja.json ko.json zh-TW.json ar.json
+  _template.json    ← copy this to start a new language
+```
+
+How it works:
+
 - The language selector lives in the header on every page.
 - The chosen language is saved in `localStorage` (`kbkx-lang`) and restored on the next visit. If none is saved, the browser language is matched where possible.
-- Text is swapped by `script.js` using `data-i18n` attributes:
+- `script.js` fetches `i18n/languages.json`, then the JSON for the active language (plus English as a fallback), and swaps text via `data-i18n` attributes:
   - `data-i18n="key"` → replaces text content
   - `data-i18n-placeholder="key"` → replaces an input placeholder
   - `data-i18n-aria-label="key"` → replaces an aria-label
+- **Missing/blank keys fall back to English**, so a partially translated language never breaks the page — it just shows English for the gaps.
 - **Arabic** switches the whole page to right-to-left via `dir="rtl"` on `<html>`; the CSS uses logical properties so the layout mirrors correctly.
 
-### Scope & editing translations
+### Editing copy
 
-Coverage today:
+Open the relevant `i18n/<code>.json` file and change the **values** (never the keys). Save,
+refresh — done, no build step. (Because the files are fetched, view the site through a
+local server, not `file://`.)
 
-- **Site-wide chrome** — navigation, CTAs, section headings, form labels, the cookie banner — is fully localized in all five languages.
-- **The homepage (`index.html`)** is fully localized, *including* card titles and descriptions and the connectivity section — a complete reference for what "done" looks like.
-- **Interior pages** (hotels, partners, about) have their hero, headings, and intros localized; some longer descriptive paragraphs there remain English. Extending them is mechanical: add a `data-i18n="some.key"` attribute to the element and add `some.key` to each language block in `translations.js`.
+### Adding a language
 
-To edit or improve translations, open **`translations.js`** and change the values under each language code. Non-English text is **draft quality** and should be reviewed by a native speaker. To add a language, copy the `en` block, translate the values, and add an entry to the `LANGUAGES` array at the top (set `dir: "rtl"` for right-to-left languages).
+1. Copy `i18n/_template.json` → `i18n/<code>.json` (e.g. `fr.json`).
+2. Translate the values.
+3. Add one line to `i18n/languages.json`: `{ "code": "fr", "label": "Français", "dir": "ltr" }`
+   (use `"dir": "rtl"` for right-to-left languages).
 
-Note: when a translation key is missing for the active language, the element keeps its English HTML text (graceful fallback) — so a partially translated page never breaks, it just shows English for the untranslated bits.
+That's the whole process — no code changes. Full details in [`i18n/README.md`](i18n/README.md).
+
+### Coverage & quality
+
+The homepage is fully localized (including card copy); interior pages have their hero,
+headings, and intros localized, with some longer body paragraphs still English. Non-English
+text is **draft quality** and should be reviewed by a native speaker.
 
 ---
 

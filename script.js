@@ -119,14 +119,20 @@
 
   /* ---------------------------------------------------------------------
      2. Localization
-     --------------------------------------------------------------------- */
-  var LANGUAGES = window.KBKX_LANGUAGES || [{ code: "en", label: "English", dir: "ltr" }];
-  var TRANSLATIONS = window.KBKX_TRANSLATIONS || { en: {} };
+     --------------------------------------------------------------------
+     Copy lives in per-language JSON files under i18n/ (see i18n/README.md):
+       i18n/languages.json  -> the list of languages + labels + direction
+       i18n/<code>.json     -> the strings for one language (e.g. i18n/ja.json)
+     Files are fetched at runtime and cached. Missing keys fall back to English,
+     so a partial translation never breaks the page. */
+  var I18N_DIR = "i18n/";
+  var LANGUAGES = [{ code: "en", label: "English", dir: "ltr" }];
+  var TRANSLATIONS = {};   // code -> { key: value }, filled on demand
 
   function getLang() {
     var stored = null;
     try { stored = localStorage.getItem(LANG_KEY); } catch (e) {}
-    if (stored && TRANSLATIONS[stored]) return stored;
+    if (stored && LANGUAGES.some(function (l) { return l.code === stored; })) return stored;
     // Try to match the browser language against what we support.
     var nav = (navigator.language || "").toLowerCase();
     var match = LANGUAGES.filter(function (l) {
@@ -135,36 +141,50 @@
     return match ? match.code : DEFAULT_LANG;
   }
 
-  function setLang(code) {
-    if (!TRANSLATIONS[code]) code = DEFAULT_LANG;
-    try { localStorage.setItem(LANG_KEY, code); } catch (e) {}
+  // Fetch (and cache) one language's strings.
+  function loadLang(code) {
+    if (TRANSLATIONS[code]) return Promise.resolve(TRANSLATIONS[code]);
+    return fetchJSON(I18N_DIR + code + ".json")
+      .then(function (d) { TRANSLATIONS[code] = d; return d; })
+      .catch(function (err) {
+        console.warn("[KabuK Exchange] Missing translation file: " + code + ".json", err.message);
+        TRANSLATIONS[code] = {};
+        return TRANSLATIONS[code];
+      });
+  }
 
-    var dict = TRANSLATIONS[code];
+  // Apply an already-loaded language to the DOM (English used as fallback).
+  function applyLang(code) {
+    var dict = TRANSLATIONS[code] || {};
+    var en = TRANSLATIONS[DEFAULT_LANG] || {};
+    function T(key) { return dict[key] != null ? dict[key] : en[key]; }
+
     var langMeta = LANGUAGES.filter(function (l) { return l.code === code; })[0] || {};
-
-    // Direction + lang attributes for RTL support and accessibility.
     document.documentElement.setAttribute("lang", code);
     document.documentElement.setAttribute("dir", langMeta.dir || "ltr");
 
-    // Text content
     $all("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (dict[key] != null) el.textContent = dict[key];
+      var v = T(el.getAttribute("data-i18n"));
+      if (v != null) el.textContent = v;
     });
-    // Placeholders
     $all("[data-i18n-placeholder]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-placeholder");
-      if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
+      var v = T(el.getAttribute("data-i18n-placeholder"));
+      if (v != null) el.setAttribute("placeholder", v);
     });
-    // aria-labels
     $all("[data-i18n-aria-label]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-aria-label");
-      if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+      var v = T(el.getAttribute("data-i18n-aria-label"));
+      if (v != null) el.setAttribute("aria-label", v);
     });
 
-    // Keep the selector in sync.
     var sel = $("#lang-select");
     if (sel) sel.value = code;
+  }
+
+  // Public: switch language. Ensures English (fallback) + target are loaded.
+  function setLang(code) {
+    if (!LANGUAGES.some(function (l) { return l.code === code; })) code = DEFAULT_LANG;
+    try { localStorage.setItem(LANG_KEY, code); } catch (e) {}
+    Promise.all([loadLang(DEFAULT_LANG), loadLang(code)]).then(function () { applyLang(code); });
   }
 
   function buildLangSelector() {
@@ -178,6 +198,21 @@
       sel.appendChild(opt);
     });
     sel.addEventListener("change", function () { setLang(sel.value); });
+  }
+
+  // Load the language manifest, build the selector, apply the active language.
+  function initI18n() {
+    return fetchJSON(I18N_DIR + "languages.json")
+      .then(function (list) {
+        if (Array.isArray(list) && list.length) LANGUAGES = list;
+      })
+      .catch(function (err) {
+        console.warn("[KabuK Exchange] Could not load i18n/languages.json — defaulting to English.", err.message);
+      })
+      .then(function () {
+        buildLangSelector();
+        setLang(getLang());
+      });
   }
 
   /* ---------------------------------------------------------------------
@@ -588,15 +623,14 @@
      Boot
      --------------------------------------------------------------------- */
   function boot() {
-    buildLangSelector();
     initThemeSwitcher();     // apply saved theme + build the palette control
-    initCookieBanner();      // build banner first so setLang() can translate it
-    setLang(getLang());
+    initCookieBanner();      // build banner first so the i18n pass can translate it
     initNav();
     initReveal();
     initIcons();
     initEcosystem();
     initForms();
+    initI18n();              // load i18n/ manifest + language files, then apply
     loadConfig().then(applyConfig);
   }
 
