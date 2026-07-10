@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>For Partners — KabuK Exchange</title>
   <meta name="description" content="OTAs, agencies, wholesalers, suppliers, PMS companies, channel managers, and technology partners: access Japanese hotel supply through modern APIs with KabuK Exchange." />
-  <link rel="canonical" href="https://www.kbkx.example.com/partners.html" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="canonical" href="https://www.kbkx.example.com/partners/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Open Graph / social share (PLACEHOLDER domain + image) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="KabuK Exchange" />
   <meta property="og:title" content="For Partners — KabuK Exchange" />
   <meta property="og:description" content="OTAs, agencies, wholesalers, suppliers, PMS companies, channel managers, and technology partners: access Japanese hotel supply through modern APIs with KabuK Exchange." />
-  <meta property="og:url" content="https://www.kbkx.example.com/partners.html" />
+  <meta property="og:url" content="https://www.kbkx.example.com/partners/" />
   <meta property="og:image" content="https://www.kbkx.example.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -21,31 +21,92 @@
   <meta name="twitter:description" content="OTAs, agencies, wholesalers, suppliers, PMS companies, channel managers, and technology partners: access Japanese hotel supply through modern APIs with KabuK Exchange." />
   <meta name="twitter:image" content="https://www.kbkx.example.com/og-image.png" />
   <meta name="theme-color" content="#0a1330" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="KabuK Exchange home">
-        <span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span>
+      <a class="brand" href="/" aria-label="KabuK Exchange, by KabuK Style — home">
+        <span class="brand-mark">K</span>
+        <span class="brand-text">
+          <span class="brand-name">KabuK <span class="brand-x">Exchange</span></span>
+          <span class="brand-sub" data-i18n="brand.by">by KabuK Style</span>
+        </span>
       </a>
 
       <!-- Everything inside .header-menu collapses into the hamburger on small screens -->
       <div class="header-menu" id="primary-menu">
         <nav class="main-nav" aria-label="Primary">
           <ul>
-            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-            <li><a href="hotels.html" data-i18n="nav.hotels">For Hotels</a></li>
-            <li><a href="partners.html" data-i18n="nav.partners">For Partners</a></li>
-            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+            <li class="has-dropdown">
+              <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="menu-solutions">
+                <span data-i18n="nav.solutions">Solutions</span>
+              </button>
+              <div class="dropdown" id="menu-solutions" role="menu" aria-label="Solutions">
+                <a class="dropdown-item" role="menuitem" href="/hotels/">
+                  <span class="di-title" data-i18n="sol.hotels.t">For Hotels &amp; Property Owners</span>
+                  <span class="di-desc" data-i18n="sol.hotels.d">Connect your properties to domestic and global travel demand.</span>
+                </a>
+                <a class="dropdown-item" role="menuitem" href="/partners/#demand-partners">
+                  <span class="di-title" data-i18n="sol.demand.t">For Demand Partners</span>
+                  <span class="di-desc" data-i18n="sol.demand.d">For OTAs, marketplaces, travel agencies, DMCs, bedbanks, and wholesalers.</span>
+                </a>
+                <a class="dropdown-item" role="menuitem" href="/partners/#connectivity-partners">
+                  <span class="di-title" data-i18n="sol.connectivity.t">For Connectivity Partners</span>
+                  <span class="di-desc" data-i18n="sol.connectivity.d">For PMS, channel managers, CRS providers, switches, and API platforms.</span>
+                </a>
+                <a class="dropdown-item" role="menuitem" href="/partners/#supply-partners">
+                  <span class="di-title" data-i18n="sol.supply.t">For Supply Partners</span>
+                  <span class="di-desc" data-i18n="sol.supply.d">For hotel groups, wholesalers, regional suppliers, and inventory partners.</span>
+                </a>
+              </div>
+            </li>
+
+            <li class="has-dropdown">
+              <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="menu-platform">
+                <span data-i18n="nav.platform">Platform</span>
+              </button>
+              <div class="dropdown dropdown-wide" id="menu-platform" role="menu" aria-label="Platform">
+                <div class="dd-grid">
+                  <a class="dropdown-item" role="menuitem" href="/platform/#distribution-network">
+                    <span class="di-title" data-i18n="plat.distribution.t">Distribution Network</span>
+                    <span class="di-desc" data-i18n="plat.distribution.d">Connect hotel supply with global and regional demand channels.</span>
+                  </a>
+                  <a class="dropdown-item" role="menuitem" href="/platform/#api-connectivity">
+                    <span class="di-title" data-i18n="plat.api.t">API Connectivity</span>
+                    <span class="di-desc" data-i18n="plat.api.d">Standardized APIs for search, pricing, availability, booking, and operations.</span>
+                  </a>
+                  <a class="dropdown-item" role="menuitem" href="/platform/#pricing-availability">
+                    <span class="di-title" data-i18n="plat.pricing.t">Pricing &amp; Availability</span>
+                    <span class="di-desc" data-i18n="plat.pricing.d">Multi-channel pricing, inventory rules, and commercial controls.</span>
+                  </a>
+                  <a class="dropdown-item" role="menuitem" href="/platform/#booking-infrastructure">
+                    <span class="di-title" data-i18n="plat.booking.t">Booking Infrastructure</span>
+                    <span class="di-desc" data-i18n="plat.booking.d">Booking, reservation, cancellation, and status management services.</span>
+                  </a>
+                  <a class="dropdown-item" role="menuitem" href="/platform/#billing-payments">
+                    <span class="di-title" data-i18n="plat.billing.t">Billing &amp; Payments</span>
+                    <span class="di-desc" data-i18n="plat.billing.d">Settlement, invoices, reconciliation, AR/AP workflows, and partner billing.</span>
+                  </a>
+                  <a class="dropdown-item" role="menuitem" href="/platform/#partner-operations">
+                    <span class="di-title" data-i18n="plat.operations.t">Partner Operations</span>
+                    <span class="di-desc" data-i18n="plat.operations.d">Onboarding, support workflows, operational visibility, and partner management.</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li><a href="/#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a></li>
+            <li><a href="/about/" data-i18n="nav.about">About Us</a></li>
           </ul>
         </nav>
+
         <div class="header-cta">
           <a class="btn btn-ghost" data-role="partner-login" href="#" rel="noopener" data-i18n="cta.login">Partner Login</a>
-          <a class="btn btn-secondary" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
-          <a class="btn btn-primary" href="link-your-property.html" data-i18n="cta.linkProperty">Link Your Property</a>
+          <a class="btn btn-secondary" href="/become-a-partner/" data-i18n="cta.becomePartner">Become a Partner</a>
+          <a class="btn btn-primary" href="/link-your-property/" data-i18n="cta.linkProperty">Link Your Property</a>
         </div>
       </div>
 
@@ -67,7 +128,7 @@
             For OTAs, agencies, wholesalers, suppliers, PMS companies, channel managers, and technology partners.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
+            <a class="btn btn-primary btn-lg" href="/become-a-partner/" data-i18n="cta.becomePartner">Become a Partner</a>
             <a class="btn btn-ghost btn-lg" href="#journey" data-i18n="partners.journey.title">Integration journey</a>
           </div>
         </div>
@@ -129,22 +190,50 @@
       </div>
     </section>
 
-    <!-- PARTNER TYPES -->
-    <section class="section-alt">
+    <!-- PARTNER TYPES — anchored by category (linked from the Solutions menu) -->
+    <section class="section-alt" id="demand-partners">
       <div class="container">
-        <div class="section-head center reveal">
+        <div class="section-head reveal">
           <span class="eyebrow" data-i18n="partners.types.title">Partner types</span>
-          <h2 data-i18n="partners.types.title">Partner types</h2>
+          <h2 data-i18n="sol.demand.t">For Demand Partners</h2>
+          <p class="lead" data-i18n="sol.demand.d">For OTAs, marketplaces, travel agencies, DMCs, bedbanks, and wholesalers.</p>
         </div>
-        <div class="grid grid-4">
+        <div class="grid grid-3">
           <article class="card reveal"><div class="card-icon" data-icon="globe"></div><h3>OTAs &amp; marketplaces</h3><p>Source structured supply for your booking platform.</p></article>
           <article class="card reveal" data-delay="1"><div class="card-icon" data-icon="briefcase"></div><h3>Travel agencies &amp; DMCs</h3><p>Serve travelers with reliable inventory and content.</p></article>
-          <article class="card reveal" data-delay="2"><div class="card-icon" data-icon="box"></div><h3>Wholesalers &amp; bedbanks</h3><p>Aggregate and redistribute supply downstream.</p></article>
-          <article class="card reveal" data-delay="3"><div class="card-icon" data-icon="building"></div><h3>Suppliers</h3><p>Contribute supply into the distribution network.</p></article>
+          <article class="card reveal" data-delay="2"><div class="card-icon" data-icon="box"></div><h3>Bedbanks &amp; wholesalers</h3><p>Consume and resell supply across your downstream network.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="connectivity-partners">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="partners.types.title">Partner types</span>
+          <h2 data-i18n="sol.connectivity.t">For Connectivity Partners</h2>
+          <p class="lead" data-i18n="sol.connectivity.d">For PMS, channel managers, CRS providers, switches, and API platforms.</p>
+        </div>
+        <div class="grid grid-4">
           <article class="card reveal"><div class="card-icon" data-icon="plug"></div><h3>PMS companies</h3><p>Connect property systems. <span class="badge badge-planned">Planned</span></p></article>
           <article class="card reveal" data-delay="1"><div class="card-icon" data-icon="antenna"></div><h3>Channel managers</h3><p>Bridge distribution and property systems. <span class="badge badge-planned">Planned</span></p></article>
-          <article class="card reveal" data-delay="2"><div class="card-icon" data-icon="puzzle"></div><h3>Technology partners</h3><p>Build on top of KabuK Exchange APIs and services.</p></article>
-          <article class="card reveal" data-delay="3"><div class="card-icon" data-icon="handshake"></div><h3>Strategic partners</h3><p>Explore deeper commercial collaboration.</p></article>
+          <article class="card reveal" data-delay="2"><div class="card-icon" data-icon="gear"></div><h3>CRS &amp; switches</h3><p>Route availability and bookings across systems.</p></article>
+          <article class="card reveal" data-delay="3"><div class="card-icon" data-icon="puzzle"></div><h3>Technology partners</h3><p>Build on top of KabuK Exchange APIs and services.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="supply-partners">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="partners.types.title">Partner types</span>
+          <h2 data-i18n="sol.supply.t">For Supply Partners</h2>
+          <p class="lead" data-i18n="sol.supply.d">For hotel groups, wholesalers, regional suppliers, and inventory partners.</p>
+        </div>
+        <div class="grid grid-4">
+          <article class="card reveal"><div class="card-icon" data-icon="building"></div><h3>Hotel groups</h3><p>Standardize distribution across your portfolio.</p></article>
+          <article class="card reveal" data-delay="1"><div class="card-icon" data-icon="box"></div><h3>Wholesalers</h3><p>Contribute supply into the distribution network.</p></article>
+          <article class="card reveal" data-delay="2"><div class="card-icon" data-icon="japan"></div><h3>Regional suppliers</h3><p>Bring local inventory to global demand.</p></article>
+          <article class="card reveal" data-delay="3"><div class="card-icon" data-icon="layers"></div><h3>Inventory partners</h3><p>Aggregate and redistribute room supply.</p></article>
         </div>
       </div>
     </section>
@@ -198,7 +287,7 @@
           <h2>Let's build a connection</h2>
           <p>Tell us about your organization and how you'd like to work with KabuK Exchange.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="become-a-partner.html" data-i18n="cta.becomePartner">Become a Partner</a>
+            <a class="btn btn-primary btn-lg" href="/become-a-partner/" data-i18n="cta.becomePartner">Become a Partner</a>
           </div>
         </div>
       </div>
@@ -209,7 +298,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="index.html" aria-label="KabuK Exchange home"><span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span></a>
+          <a class="brand" href="/" aria-label="KabuK Exchange home"><span class="brand-mark">K</span><span>KabuK <span class="brand-x">Exchange</span></span></a>
           <p class="footer-about" data-i18n="footer.about">KabuK Exchange is a B2B2B travel distribution platform by KabuK Style Inc., connecting global hotel supply and demand through API-driven connectivity.</p>
         </div>
         <nav class="footer-col" aria-label="KabuK Exchange links"><h4 data-i18n="footer.site">KabuK Exchange</h4><ul data-footer="site"></ul></nav>
@@ -223,6 +312,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>

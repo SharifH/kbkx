@@ -37,7 +37,7 @@
      1. Site config
      --------------------------------------------------------------------- */
   function loadConfig() {
-    return fetchJSON("site-config.json")
+    return fetchJSON("/site-config.json")
       .then(function (cfg) { siteConfig = cfg; return cfg; })
       .catch(function (err) {
         console.warn("[KabuK Exchange] Using fallback config:", err.message);
@@ -125,7 +125,7 @@
        i18n/<code>.json     -> the strings for one language (e.g. i18n/ja.json)
      Files are fetched at runtime and cached. Missing keys fall back to English,
      so a partial translation never breaks the page. */
-  var I18N_DIR = "i18n/";
+  var I18N_DIR = "/i18n/";
   var LANGUAGES = [{ code: "en", label: "English", dir: "ltr" }];
   var TRANSLATIONS = {};   // code -> { key: value }, filled on demand
 
@@ -220,12 +220,17 @@
      --------------------------------------------------------------------- */
   // Mark the nav link for the current page. Done in JS so the header markup
   // is identical on every page (see partials/header.html + build.py).
+  // Clean-URL aware: normalizes "/hotels/", "/hotels/index.html" and "/hotels"
+  // to the same path so the match works regardless of how the host serves it.
+  function normPath(p) {
+    p = (p || "/").toLowerCase().replace(/index\.html$/, "");
+    if (p.length > 1 && p.charAt(p.length - 1) === "/") p = p.slice(0, -1);
+    return p || "/";
+  }
   function markActiveNav() {
-    var page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-    if (!page) page = "index.html";
+    var here = normPath(location.pathname);
     $all(".main-nav a").forEach(function (a) {
-      var href = (a.getAttribute("href") || "").toLowerCase();
-      if (href === page) a.setAttribute("aria-current", "page");
+      if (normPath(a.pathname) === here) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
   }
@@ -245,6 +250,65 @@
         header.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
       });
+    });
+  }
+
+  // Accessible dropdown menus (Solutions, Platform). Click/tap toggles; on desktop
+  // CSS also opens on hover/focus-within, and we keep aria-expanded in sync.
+  function initDropdowns() {
+    var items = $all(".has-dropdown");
+    if (!items.length) return;
+    var desktop = window.matchMedia("(min-width: 1281px)");
+
+    function closeAll(except) {
+      items.forEach(function (li) {
+        if (li === except) return;
+        li.classList.remove("open");
+        var b = li.querySelector(".dropdown-toggle");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+    }
+
+    items.forEach(function (li) {
+      var btn = li.querySelector(".dropdown-toggle");
+      if (!btn) return;
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var willOpen = !li.classList.contains("open");
+        closeAll(li);
+        li.classList.toggle("open", willOpen);
+        btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      });
+
+      // Desktop: reflect hover/focus (which CSS uses to open) in aria-expanded.
+      li.addEventListener("mouseenter", function () { if (desktop.matches) btn.setAttribute("aria-expanded", "true"); });
+      li.addEventListener("mouseleave", function () {
+        if (desktop.matches && !li.classList.contains("open")) btn.setAttribute("aria-expanded", "false");
+      });
+      li.addEventListener("focusin", function () { if (desktop.matches) btn.setAttribute("aria-expanded", "true"); });
+      li.addEventListener("focusout", function () {
+        if (desktop.matches && !li.contains(document.activeElement)) btn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Click outside closes any open dropdown.
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".has-dropdown")) closeAll(null);
+    });
+    // Escape closes and returns focus to the toggle.
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      var open = $(".has-dropdown.open");
+      if (!open) return;
+      var b = open.querySelector(".dropdown-toggle");
+      open.classList.remove("open");
+      if (b) { b.setAttribute("aria-expanded", "false"); b.focus(); }
+    });
+    // Selecting an item closes the dropdown (mobile menu close is handled in initNav).
+    $all(".dropdown-item").forEach(function (a) {
+      a.addEventListener("click", function () { closeAll(null); });
     });
   }
 
@@ -279,7 +343,7 @@
     var filterBar = $("#eco-filter");
     if (!grid) return;
 
-    fetchJSON("partners.json").then(function (data) {
+    fetchJSON("/partners.json").then(function (data) {
       var categories = data.categories || [];
       var entries = data.entries || [];
 
@@ -626,6 +690,7 @@
     initThemeSwitcher();     // apply saved theme + build the palette control
     initCookieBanner();      // build banner first so the i18n pass can translate it
     initNav();
+    initDropdowns();
     initReveal();
     initIcons();
     initEcosystem();

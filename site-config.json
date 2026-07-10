@@ -17,14 +17,15 @@
   "apiEndpoint": "https://api.kbkx.example.com/v1/leads",
 
   "footerLinks": [
-    { "label": "Home", "href": "index.html" },
-    { "label": "For Hotels", "href": "hotels.html" },
-    { "label": "For Partners", "href": "partners.html" },
-    { "label": "About Us", "href": "about.html" },
-    { "label": "Link Your Property", "href": "link-your-property.html" },
-    { "label": "Become a Partner", "href": "become-a-partner.html" },
-    { "label": "Privacy Policy", "href": "privacy.html" },
-    { "label": "Terms of Use", "href": "terms.html" }
+    { "label": "Home", "href": "/" },
+    { "label": "For Hotels", "href": "/hotels/" },
+    { "label": "For Partners", "href": "/partners/" },
+    { "label": "Platform", "href": "/platform/" },
+    { "label": "About Us", "href": "/about/" },
+    { "label": "Link Your Property", "href": "/link-your-property/" },
+    { "label": "Become a Partner", "href": "/become-a-partner/" },
+    { "label": "Privacy Policy", "href": "/privacy/" },
+    { "label": "Terms of Use", "href": "/terms/" }
   ],
 
   "companyLinks": [

@@ -33,7 +33,13 @@ def main():
     header_re = re.compile(r'[ \t]*<header class="site-header">.*?</header>', re.S)
     footer_re = re.compile(r'[ \t]*<footer class="site-footer">.*?</footer>', re.S)
 
-    pages = sorted(glob.glob(os.path.join(ROOT, "*.html")))
+    # Root pages (index.html, 404.html) + folder pages (hotels/index.html, …).
+    # partials/*.html are excluded on purpose — they are the source, not pages.
+    pages = sorted(set(
+        glob.glob(os.path.join(ROOT, "*.html")) +
+        glob.glob(os.path.join(ROOT, "*", "index.html"))
+    ))
+    pages = [p for p in pages if os.path.basename(os.path.dirname(p)) != "partials"]
     changed = 0
     for path in pages:
         original = open(path, encoding="utf-8").read()

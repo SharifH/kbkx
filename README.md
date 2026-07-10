@@ -12,19 +12,20 @@ Built with **plain HTML, CSS, and vanilla JavaScript** plus a couple of **JSON c
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Homepage (hero network, who we serve, why KabuK Exchange, capabilities, connections, ecosystem, CTA) |
-| `hotels.html` | For Hotels page |
-| `partners.html` | For Partners page |
-| `about.html` | About Us page |
-| `become-a-partner.html` | Lead form for OTAs, agencies, wholesalers, suppliers, tech partners |
-| `link-your-property.html` | Lead form for hotels and hotel groups |
+| `index.html` | Homepage → served at `/` |
+| `hotels/index.html` | For Hotels → `/hotels/` |
+| `partners/index.html` | For Partners → `/partners/` (anchored: `#demand-partners`, `#connectivity-partners`, `#supply-partners`) |
+| `platform/index.html` | Platform → `/platform/` (anchored sections for each capability) |
+| `about/index.html` | About Us → `/about/` |
+| `become-a-partner/index.html` | Lead form for OTAs, agencies, wholesalers, suppliers, tech partners → `/become-a-partner/` |
+| `link-your-property/index.html` | Lead form for hotels and hotel groups → `/link-your-property/` |
+| `privacy/index.html` / `terms/index.html` | Placeholder legal pages → `/privacy/`, `/terms/` |
+| `404.html` | Styled not-found page |
 | `styles.css` | All styling and animations |
 | `script.js` | Behavior: config loading, i18n, nav, animations, ecosystem filter, forms |
 | `i18n/` | Copy for each language as separate JSON files + `languages.json` manifest (see `i18n/README.md`) |
 | `partners.json` | Editable ecosystem directory shown on the homepage |
 | `site-config.json` | Editable settings: login URL, form emails, footer/company links |
-| `privacy.html` / `terms.html` | Placeholder legal pages (Privacy linked from the forms' consent checkbox) |
-| `404.html` | Styled not-found page |
 | `favicon.svg` | Browser-tab icon |
 | `og-image.png` / `og-image.svg` | Social share image (1200×630) + its editable source |
 | `robots.txt` / `sitemap.xml` | Search-engine hints (PLACEHOLDER domain) |
@@ -32,6 +33,30 @@ Built with **plain HTML, CSS, and vanilla JavaScript** plus a couple of **JSON c
 | `build.py` | Optional helper that syncs the partials into every page (see below) |
 
 ---
+
+## Clean URLs (no `.html`)
+
+Each page lives in its own folder as `index.html`, so it's served at a clean path with
+no file extension:
+
+| Folder | URL |
+|--------|-----|
+| `index.html` | `/` |
+| `hotels/index.html` | `/hotels/` |
+| `about/index.html` | `/about/` |
+| … | … |
+
+This works on any static host (and the local server below) with no configuration.
+Because pages sit at different folder depths, **all internal links and asset references
+are root-relative** (`/styles.css`, `/hotels/`, `/i18n/…`) — so they resolve the same from
+every page. This assumes the site is served from a domain root (all the recommended hosts
+do). If you ever want to drop the trailing slash too (`/hotels` instead of `/hotels/`),
+Netlify/Vercel/Cloudflare each have a "pretty URLs / trailing slash" toggle.
+
+To **add a page**: create `your-page/index.html` (copy an existing page as a starting
+point), link to it as `/your-page/`, and run `python3 build.py` to drop in the shared
+header/footer. Add it to `sitemap.xml` and, if it should appear in the footer, to
+`site-config.json`.
 
 ## Run it locally
 
@@ -123,6 +148,26 @@ Edit **`site-config.json`**:
 The form-handling code already supports both paths, so this is a config-only change.
 
 ---
+
+## Header navigation
+
+The top nav is consolidated into an enterprise-style structure, all defined in
+`partials/header.html` (run `python3 build.py` after editing to sync every page):
+
+- **Solutions** and **Platform** are dropdown menus (`.has-dropdown` with a
+  `<button class="dropdown-toggle">` and a `.dropdown` panel of `.dropdown-item`
+  links, each with a `.di-title` and `.di-desc`).
+- **Ecosystem** (`/#ecosystem`) and **About Us** (`/about/`) are plain links.
+- The three CTAs — **Partner Login** (→ `adminConsoleUrl`), **Become a Partner**
+  (→ `/become-a-partner/`), **Link Your Property** (→ `/link-your-property/`) — stay
+  visible on the right and are never hidden in a dropdown.
+
+Dropdown behavior (`initDropdowns` in `script.js`): click/tap to toggle, hover and
+keyboard focus open it on desktop, `Escape` closes and restores focus, clicking outside
+closes, and `aria-expanded` / `aria-haspopup` / `role="menu"` keep it screen-reader
+friendly. On mobile everything collapses into the hamburger and the dropdowns expand
+inline. Dropdown labels and descriptions are localized (keys `nav.*`, `sol.*`, `plat.*`
+in the `i18n/` files).
 
 ## Editing the shared header & footer
 
@@ -281,6 +326,12 @@ aws s3 sync . s3://YOUR_BUCKET --delete
 aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/*"
 ```
 Make sure `.json` files are served with `Content-Type: application/json` (S3 does this by extension automatically).
+
+**Clean-URL note for S3/CloudFront:** the folder structure means requests like `/hotels/`
+must resolve to `/hotels/index.html`. The S3 *website* endpoint does this automatically
+(it appends `index.html` to any path ending in `/`). If you serve S3 through CloudFront via
+the REST/OAC origin instead, add a small CloudFront Function (viewer-request) that appends
+`index.html` to directory paths. Netlify, Vercel, and Cloudflare Pages handle this for you.
 
 ---
 

@@ -188,14 +188,18 @@ p { margin: 0 0 1rem; }
 }
 .brand {
   display: inline-flex; align-items: center; gap: 10px;
-  font-weight: 800; font-size: 1.25rem; color: #fff; letter-spacing: -0.02em;
+  color: #fff; letter-spacing: -0.02em; flex: 0 0 auto;
 }
 .brand:hover { text-decoration: none; }
 .brand-mark {
-  width: 30px; height: 30px; border-radius: 8px;
+  width: 34px; height: 34px; border-radius: 9px; flex: 0 0 auto;
   background: var(--grad-accent);
-  display: grid; place-items: center; color: #fff; font-size: 0.8rem; font-weight: 800;
+  display: grid; place-items: center; color: #fff; font-size: 0.9rem; font-weight: 800;
 }
+/* Two-line lockup: product name over "by KabuK Style" */
+.brand-text { display: flex; flex-direction: column; line-height: 1.08; }
+.brand-name { font-weight: 800; font-size: 1.15rem; }
+.brand-sub { font-size: 0.72rem; font-weight: 500; color: #97a6d8; letter-spacing: 0.01em; }
 .brand-x { color: var(--accent-2); }
 
 /* Collapsible menu wrapper: nav links + CTAs together. On desktop it fills the
@@ -213,6 +217,44 @@ p { margin: 0 0 1rem; }
 .main-nav a:hover, .main-nav a[aria-current="page"] {
   color: #fff; background: rgba(255,255,255,0.08); text-decoration: none;
 }
+.main-nav ul { align-items: center; }
+
+/* ---- Dropdown menus ---- */
+.has-dropdown { position: relative; }
+.dropdown-toggle {
+  font: inherit; font-weight: 500; color: rgba(255,255,255,0.82);
+  background: none; border: 0; cursor: pointer; padding: 8px 10px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+}
+.dropdown-toggle::after {
+  content: ""; width: 0; height: 0; border: 4px solid transparent;
+  border-top-color: currentColor; margin-top: 3px; transition: transform 0.2s ease;
+}
+.dropdown-toggle:hover,
+.dropdown-toggle[aria-expanded="true"] { color: #fff; background: rgba(255,255,255,0.08); }
+.dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+
+.dropdown {
+  display: none; position: absolute; top: calc(100% + 8px); inset-inline-start: 0;
+  min-width: 320px; padding: 10px; z-index: 120;
+  background: var(--white); color: var(--ink);
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-lg);
+}
+.dropdown-wide { width: 680px; min-width: 0; max-width: calc(100vw - 32px); }
+/* minmax(0,1fr) keeps the two tracks equal and lets long descriptions wrap
+   instead of forcing the columns wider than the panel. */
+.dd-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.has-dropdown.open > .dropdown { display: block; }
+/* Pointer + keyboard open on desktop only (mobile uses tap-to-expand). */
+@media (min-width: 1281px) {
+  .has-dropdown:hover > .dropdown,
+  .has-dropdown:focus-within > .dropdown { display: block; }
+}
+.dropdown-item { display: block; padding: 10px 12px; border-radius: 10px; text-decoration: none; white-space: normal; }
+.dropdown-item:hover, .dropdown-item:focus-visible { background: var(--slate-100); text-decoration: none; }
+.di-title { display: block; font-weight: 650; font-size: 0.95rem; color: var(--ink); white-space: normal; }
+.di-desc { display: block; font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; white-space: normal; }
+
 .header-cta { display: flex; gap: 8px; align-items: center; }
 /* Compact header CTAs so the full row fits before the hamburger breakpoint.
    (They return to full size when stacked in the mobile menu — see below.) */
@@ -279,13 +321,27 @@ p { margin: 0 0 1rem; }
     border-radius: 0 0 var(--radius) var(--radius);
     box-shadow: var(--shadow-lg);
   }
-  .site-header.open .main-nav ul { flex-direction: column; gap: 4px; }
+  .site-header.open .main-nav ul { flex-direction: column; align-items: stretch; gap: 4px; }
   .site-header.open .header-cta { flex-direction: column; }
   .site-header.open .header-cta .btn { width: 100%; }
+
+  /* Dropdowns become inline, tap-to-expand sections within the mobile panel. */
+  .dropdown-toggle { width: 100%; justify-content: space-between; padding: 10px 12px; }
+  .dropdown {
+    position: static; min-width: 0; margin: 4px 0 6px; padding: 6px;
+    background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); box-shadow: none;
+    border-radius: var(--radius-sm);
+  }
+  .dd-grid { grid-template-columns: minmax(0, 1fr); }
+  .dropdown-item:hover, .dropdown-item:focus-visible { background: rgba(255,255,255,0.08); }
+  .dropdown .di-title { color: #fff; }
+  .dropdown .di-desc { color: #b9c4e6; }
 }
 
 /* ---------- Sections ---------- */
 section { padding: clamp(48px, 8vw, 96px) 0; }
+/* Offset anchored sections so the sticky header doesn't cover the heading. */
+section[id], [id].anchor { scroll-margin-top: 88px; }
 .section-dark { background: var(--grad-hero); color: #e6ecff; }
 .section-dark h1, .section-dark h2, .section-dark h3 { color: #fff; }
 .section-alt { background: var(--bg-alt); }
