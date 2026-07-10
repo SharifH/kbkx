@@ -20,6 +20,28 @@
   // Cached config, resolved once and shared across features.
   var siteConfig = null;
 
+  // Site root URL, derived from THIS script's own location. Because the pages
+  // load script.js with a relative src ("script.js" / "../script.js"), its
+  // resolved .src always points at <site-root>/script.js — so stripping the
+  // filename gives the site root. This makes fetches + root-absolute config
+  // links work at any mount point (domain root, GitHub Pages /repo/ subpath,
+  // or a local server) without hardcoding a base path.
+  var BASE = (function () {
+    var s = document.currentScript;
+    if (!s) { var all = document.getElementsByTagName("script"); s = all[all.length - 1]; }
+    var src = (s && s.src) || "";
+    return src ? src.replace(/[^/]*$/, "") : "";
+  })();
+
+  // Resolve a config href that may be root-absolute ("/hotels/") against BASE,
+  // while leaving external (http, mailto, #…) links untouched.
+  function resolveHref(href) {
+    if (!href) return "#";
+    if (/^(https?:|mailto:|tel:|#|\/\/)/i.test(href)) return href;
+    if (href.charAt(0) === "/") return BASE + href.slice(1);
+    return href;
+  }
+
   /* ---------------------------------------------------------------------
      Small helpers
      --------------------------------------------------------------------- */
@@ -37,7 +59,7 @@
      1. Site config
      --------------------------------------------------------------------- */
   function loadConfig() {
-    return fetchJSON("/site-config.json")
+    return fetchJSON(BASE + "site-config.json")
       .then(function (cfg) { siteConfig = cfg; return cfg; })
       .catch(function (err) {
         console.warn("[KabuK Exchange] Using fallback config:", err.message);
@@ -98,7 +120,7 @@
     links.forEach(function (link) {
       var li = document.createElement("li");
       var a = document.createElement("a");
-      a.href = link.href || "#";
+      a.href = resolveHref(link.href);   // "/hotels/" resolves against the site root
       var external = /^https?:/i.test(link.href || "");
       if (external) { a.target = "_blank"; a.rel = "noopener"; }
 
@@ -125,7 +147,7 @@
        i18n/<code>.json     -> the strings for one language (e.g. i18n/ja.json)
      Files are fetched at runtime and cached. Missing keys fall back to English,
      so a partial translation never breaks the page. */
-  var I18N_DIR = "/i18n/";
+  var I18N_DIR = BASE + "i18n/";
   var LANGUAGES = [{ code: "en", label: "English", dir: "ltr" }];
   var TRANSLATIONS = {};   // code -> { key: value }, filled on demand
 
@@ -343,7 +365,7 @@
     var filterBar = $("#eco-filter");
     if (!grid) return;
 
-    fetchJSON("/partners.json").then(function (data) {
+    fetchJSON(BASE + "partners.json").then(function (data) {
       var categories = data.categories || [];
       var entries = data.entries || [];
 

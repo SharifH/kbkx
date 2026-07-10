@@ -47,16 +47,27 @@ no file extension:
 | … | … |
 
 This works on any static host (and the local server below) with no configuration.
-Because pages sit at different folder depths, **all internal links and asset references
-are root-relative** (`/styles.css`, `/hotels/`, `/i18n/…`) — so they resolve the same from
-every page. This assumes the site is served from a domain root (all the recommended hosts
-do). If you ever want to drop the trailing slash too (`/hotels` instead of `/hotels/`),
+
+### Portable paths (works at a domain root OR a subpath)
+
+You **author** links and assets with easy root-absolute paths (`/styles.css`,
+`/hotels/`). When you run `python3 build.py`, it **compiles them to relative paths
+correct for each page's depth** (e.g. `styles.css` at the root, `../styles.css` one
+folder deep). `script.js` similarly resolves its data files (`site-config.json`,
+`partners.json`, `i18n/…`) and any config-driven links from **its own URL**.
+
+The result: the site runs unchanged whether it's served from a **domain root**
+(`https://kbkx.com/`) or a **subpath** (`https://<user>.github.io/<repo>/`) — no base-path
+config needed. (This is why you must run `build.py` before deploying, and why you should
+serve the site rather than open files via `file://`.)
+
+If you want to drop the trailing slash too (`/hotels` instead of `/hotels/`),
 Netlify/Vercel/Cloudflare each have a "pretty URLs / trailing slash" toggle.
 
 To **add a page**: create `your-page/index.html` (copy an existing page as a starting
-point), link to it as `/your-page/`, and run `python3 build.py` to drop in the shared
-header/footer. Add it to `sitemap.xml` and, if it should appear in the footer, to
-`site-config.json`.
+point), link to it as `/your-page/`, and run `python3 build.py` (it drops in the shared
+header/footer and fixes the paths). Add it to `sitemap.xml` and, if it should appear in
+the footer, to `site-config.json`.
 
 ## Run it locally
 
@@ -314,7 +325,26 @@ text is **draft quality** and should be reviewed by a native speaker.
 
 ## Deploying
 
-All hosts below serve static files. There is no build command.
+All hosts below serve static files. There is no build command — but **run
+`python3 build.py` before you commit/deploy** so the shared header/footer are synced
+and paths are compiled to portable relative URLs (see "Portable paths" below).
+
+### GitHub Pages
+Works out of the box, including **project sites served under a subpath**
+(`https://<user>.github.io/<repo>/`).
+
+1. Put the contents of this folder at the root of the branch/folder Pages serves
+   (e.g. `main` → `/`, or the `/docs` folder). The included **`.nojekyll`** file tells
+   Pages to serve every file as-is (so nothing under `i18n/`, including `_template.json`,
+   gets stripped by Jekyll).
+2. Run `python3 build.py` and commit before pushing.
+3. Enable Pages in the repo settings.
+
+Because all internal links/assets are **relative** and `script.js` resolves its data
+files from its own URL, the site works whether Pages serves it at a subpath or (with a
+custom domain / a `<user>.github.io` user-site repo) at the domain root — no config
+needed. *(One caveat: the `canonical`/OG tags still use the PLACEHOLDER production domain;
+update them to your real Pages/custom-domain URL for correct SEO.)*
 
 ### Netlify
 - Drag-and-drop this folder onto <https://app.netlify.com/drop>, **or** connect the repo with:
