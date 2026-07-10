@@ -29,10 +29,10 @@
   ],
 
   "companyLinks": [
-    { "label": "KabuK Style Inc.", "href": "https://www.kabukstyle.com", "icon": "building", "note": "PLACEHOLDER URL" },
+    { "label": "KabuK Style Inc.", "href": "https://www.kabuk.co.jp", "icon": "building", "note": "PLACEHOLDER URL" },
     { "label": "HafH", "href": "https://www.hafh.com", "icon": "bed", "note": "PLACEHOLDER URL" },
-    { "label": "KabuK Style News", "href": "https://www.kabukstyle.com/news", "icon": "newspaper", "note": "PLACEHOLDER URL" },
+    { "label": "KabuK Style News", "href": "https://www.kabuk.co.jp/news", "icon": "newspaper", "note": "PLACEHOLDER URL" },
     { "label": "Contact", "href": "mailto:hello@kbkx.example.com", "icon": "mail", "note": "PLACEHOLDER EMAIL" },
-    { "label": "Careers", "href": "https://www.kabukstyle.com/careers", "icon": "briefcase", "note": "PLACEHOLDER URL" }
+    { "label": "Careers", "href": "https://herp.careers/v1/kabukstyle", "icon": "briefcase", "note": "PLACEHOLDER URL" }
   ]
 }
